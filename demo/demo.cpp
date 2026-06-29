@@ -55,6 +55,8 @@
 #pragma comment(lib,"lua-52")
 #pragma comment(lib,"scriptmodule-lua")
 #endif
+#else
+#define SYS_NAMED_RESOURCE _T("soui-sys-resource64.dll")
 #endif
 
 #include "../controls.extend/smiley/ssmileyctrl.h"
