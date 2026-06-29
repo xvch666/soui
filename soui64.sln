@@ -3,6 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.14.37411.7 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gtest64", "third-part\gtest\gtest64.vcxproj", "{8F7E3163-80F4-383C-B1F8-72439F760177}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AFC2B510-8F1A-358C-919F-98DCE7CC33CA} = {AFC2B510-8F1A-358C-919F-98DCE7CC33CA}
+		{B7156336-B6BF-3E3E-B8C4-F925D5A2958A} = {B7156336-B6BF-3E3E-B8C4-F925D5A2958A}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "png64", "third-part\png\png64.vcxproj", "{3A1AA7C9-53E9-3E77-9F2A-176546FAD92E}"
 EndProject
@@ -33,32 +37,72 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "soui64", "soui\soui64.vcxproj", "{C80C921C-EAB6-34A6-8E25-12A201D05E4B}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imgdecoder-wic64", "components\imgdecoder-wic\imgdecoder-wic64.vcxproj", "{63BDFA01-ED87-3320-99A8-C85EB32E6595}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AFC2B510-8F1A-358C-919F-98DCE7CC33CA} = {AFC2B510-8F1A-358C-919F-98DCE7CC33CA}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "render-gdi64", "components\render-gdi\render-gdi64.vcxproj", "{9DF8A491-ABAA-3F5E-85D9-F8253AEC64A2}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "render-skia64", "components\render-skia\render-skia64.vcxproj", "{3BC06FE7-AEBC-303A-9540-48EE7DDB2142}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4F6E75F0-D46A-3964-A27C-C8F78BEF34F7} = {4F6E75F0-D46A-3964-A27C-C8F78BEF34F7}
+		{AFC2B510-8F1A-358C-919F-98DCE7CC33CA} = {AFC2B510-8F1A-358C-919F-98DCE7CC33CA}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "translator64", "components\translator\translator64.vcxproj", "{9F3495FD-019F-376A-8483-676074DB29A3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AFC2B510-8F1A-358C-919F-98DCE7CC33CA} = {AFC2B510-8F1A-358C-919F-98DCE7CC33CA}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "resprovider-zip64", "components\resprovider-zip\resprovider-zip64.vcxproj", "{1CF0FBC1-F21B-3FD8-AA35-60FB61BE6B28}"
+	ProjectSection(ProjectDependencies) = postProject
+		{17ECCAD7-89EF-319A-B14F-9C1B102E6307} = {17ECCAD7-89EF-319A-B14F-9C1B102E6307}
+		{AFC2B510-8F1A-358C-919F-98DCE7CC33CA} = {AFC2B510-8F1A-358C-919F-98DCE7CC33CA}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imgdecoder-stb64", "components\imgdecoder-stb\imgdecoder-stb64.vcxproj", "{210171D2-C0A9-3EB6-A921-C3810DD909CB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{17ECCAD7-89EF-319A-B14F-9C1B102E6307} = {17ECCAD7-89EF-319A-B14F-9C1B102E6307}
+		{3A1AA7C9-53E9-3E77-9F2A-176546FAD92E} = {3A1AA7C9-53E9-3E77-9F2A-176546FAD92E}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imgdecoder-png64", "components\imgdecoder-png\imgdecoder-png64.vcxproj", "{3BD092E3-67E8-3A67-9C4A-24CDCFE72F2B}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imgdecoder-gdip64", "components\imgdecoder-gdip\imgdecoder-gdip64.vcxproj", "{581D6D6E-926B-3926-B4A0-4174ADC0F57C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C80C921C-EAB6-34A6-8E25-12A201D05E4B} = {C80C921C-EAB6-34A6-8E25-12A201D05E4B}
+		{D88E04AB-2484-38B8-9CF9-E2C21062D870} = {D88E04AB-2484-38B8-9CF9-E2C21062D870}
+		{AFC2B510-8F1A-358C-919F-98DCE7CC33CA} = {AFC2B510-8F1A-358C-919F-98DCE7CC33CA}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "scriptmodule-lua64", "components\ScriptModule-LUA\scriptmodule-lua64.vcxproj", "{EB8A7460-96D1-3073-B28F-6A8EDD1175EA}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "log4z64", "components\log4z\log4z64.vcxproj", "{2992A4A1-DBE2-3898-BEEC-89003DCE761F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3AB3D0E0-20F6-387B-B412-15A926E91C5F} = {3AB3D0E0-20F6-387B-B412-15A926E91C5F}
+		{AFC2B510-8F1A-358C-919F-98DCE7CC33CA} = {AFC2B510-8F1A-358C-919F-98DCE7CC33CA}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "resprovider-7zip64", "components\resprovider-7zip\resprovider-7zip64.vcxproj", "{AD313A55-626B-3230-8DB5-C01AC8042C5F}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TaskLoop64", "components\TaskLoop\TaskLoop64.vcxproj", "{16D6F8BA-82D1-35C7-B704-B1EACA05F500}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AFC2B510-8F1A-358C-919F-98DCE7CC33CA} = {AFC2B510-8F1A-358C-919F-98DCE7CC33CA}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SIpcObject64", "components\SIpcObject\SIpcObject64.vcxproj", "{99598086-F182-3F88-A561-0700D0C53FA8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AFC2B510-8F1A-358C-919F-98DCE7CC33CA} = {AFC2B510-8F1A-358C-919F-98DCE7CC33CA}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "demo64", "demo\demo64.vcxproj", "{BDB8D922-CC77-3572-880E-2A340E0E2452}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C80C921C-EAB6-34A6-8E25-12A201D05E4B} = {C80C921C-EAB6-34A6-8E25-12A201D05E4B}
+		{BBFD18DC-BE8B-3E0E-87B5-02AD6CBA8E34} = {BBFD18DC-BE8B-3E0E-87B5-02AD6CBA8E34}
+		{AFC2B510-8F1A-358C-919F-98DCE7CC33CA} = {AFC2B510-8F1A-358C-919F-98DCE7CC33CA}
+		{1E69EF7B-9D48-354B-A52E-F15E3359B1FC} = {1E69EF7B-9D48-354B-A52E-F15E3359B1FC}
+		{D212D346-4AE4-35B7-9A68-3D3C84CD8569} = {D212D346-4AE4-35B7-9A68-3D3C84CD8569}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
