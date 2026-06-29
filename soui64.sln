@@ -2,6 +2,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.37411.7 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "soui64", "soui\soui64.vcxproj", "{C80C921C-EAB6-34A6-8E25-12A201D05E4B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AFC2B510-8F1A-358C-919F-98DCE7CC33CA} = {AFC2B510-8F1A-358C-919F-98DCE7CC33CA}
+		{B7156336-B6BF-3E3E-B8C4-F925D5A2958A} = {B7156336-B6BF-3E3E-B8C4-F925D5A2958A}
+	EndProjectSection
+EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gtest64", "third-part\gtest\gtest64.vcxproj", "{8F7E3163-80F4-383C-B1F8-72439F760177}"
 	ProjectSection(ProjectDependencies) = postProject
 		{AFC2B510-8F1A-358C-919F-98DCE7CC33CA} = {AFC2B510-8F1A-358C-919F-98DCE7CC33CA}
@@ -33,12 +39,6 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "utilities64", "utilities\utilities64.vcxproj", "{AFC2B510-8F1A-358C-919F-98DCE7CC33CA}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "soui-sys-resource64", "soui-sys-resource\soui-sys-resource64.vcxproj", "{B7156336-B6BF-3E3E-B8C4-F925D5A2958A}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "soui64", "soui\soui64.vcxproj", "{C80C921C-EAB6-34A6-8E25-12A201D05E4B}"
-	ProjectSection(ProjectDependencies) = postProject
-		{AFC2B510-8F1A-358C-919F-98DCE7CC33CA} = {AFC2B510-8F1A-358C-919F-98DCE7CC33CA}
-		{B7156336-B6BF-3E3E-B8C4-F925D5A2958A} = {B7156336-B6BF-3E3E-B8C4-F925D5A2958A}
-	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imgdecoder-wic64", "components\imgdecoder-wic\imgdecoder-wic64.vcxproj", "{63BDFA01-ED87-3320-99A8-C85EB32E6595}"
 	ProjectSection(ProjectDependencies) = postProject

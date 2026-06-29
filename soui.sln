@@ -2,6 +2,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.37411.7 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "soui", "soui\soui.vcxproj", "{019E2980-7F7F-3E44-8F02-AF6622B1A952}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B6C114DB-C651-3F13-84BC-25C7E2AC5499} = {B6C114DB-C651-3F13-84BC-25C7E2AC5499}
+		{B435D6BF-77E3-33E4-83AD-820588B1013D} = {B435D6BF-77E3-33E4-83AD-820588B1013D}
+	EndProjectSection
+EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gtest", "third-part\gtest\gtest.vcxproj", "{90DD59EC-6DF1-33DD-B681-FE9DAAE2793A}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "png", "third-part\png\png.vcxproj", "{0042AD7B-EE32-3DFE-BF5A-41B8985F1DAF}"
@@ -29,12 +35,6 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "utilities", "utilities\utilities.vcxproj", "{B6C114DB-C651-3F13-84BC-25C7E2AC5499}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "soui-sys-resource", "soui-sys-resource\soui-sys-resource.vcxproj", "{B435D6BF-77E3-33E4-83AD-820588B1013D}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "soui", "soui\soui.vcxproj", "{019E2980-7F7F-3E44-8F02-AF6622B1A952}"
-	ProjectSection(ProjectDependencies) = postProject
-		{B6C114DB-C651-3F13-84BC-25C7E2AC5499} = {B6C114DB-C651-3F13-84BC-25C7E2AC5499}
-		{B435D6BF-77E3-33E4-83AD-820588B1013D} = {B435D6BF-77E3-33E4-83AD-820588B1013D}
-	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imgdecoder-wic", "components\imgdecoder-wic\imgdecoder-wic.vcxproj", "{13255F95-B1F8-3D7F-9E18-97C589314456}"
 EndProject
