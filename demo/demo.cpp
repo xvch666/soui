@@ -1,4 +1,4 @@
-﻿// dui-demo.cpp : main source file
+// dui-demo.cpp : main source file
 //
 
 #include "stdafx.h"
@@ -45,6 +45,7 @@
 
 #include "../components/resprovider-zip/zipresprovider-param.h"
 
+#ifndef _WIN64
 #ifdef _DEBUG
 #define SYS_NAMED_RESOURCE _T("soui-sys-resourced.dll")
 #pragma comment(lib,"lua-52d")
@@ -53,6 +54,7 @@
 #define SYS_NAMED_RESOURCE _T("soui-sys-resource.dll")
 #pragma comment(lib,"lua-52")
 #pragma comment(lib,"scriptmodule-lua")
+#endif
 #endif
 
 #include "../controls.extend/smiley/ssmileyctrl.h"

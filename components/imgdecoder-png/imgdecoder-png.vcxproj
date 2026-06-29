@@ -52,7 +52,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>.;.;..\..\third-part\png;..\..\third-part\zlib;..\..\utilities\include;..\..\soui\include;..\..\config;..\..\tools\mkspecs\win32-msvc2017;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;.;..\..\third-part\png;..\..\third-part\zlib;..\..\utilities\include;..\..\soui\include;..\..\config%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-FS -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
       <AssemblerListingLocation>..\..\obj\release\imgdecoder-png\</AssemblerListingLocation>
       <BrowseInformation>false</BrowseInformation>
@@ -92,7 +92,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>.;.;..\..\third-part\png;..\..\third-part\zlib;..\..\utilities\include;..\..\soui\include;..\..\config;..\..\tools\mkspecs\win32-msvc2017;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;.;..\..\third-part\png;..\..\third-part\zlib;..\..\utilities\include;..\..\soui\include;..\..\config%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-FS -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
       <AssemblerListingLocation>..\..\obj\debug\imgdecoder-png\</AssemblerListingLocation>
       <BrowseInformation>false</BrowseInformation>

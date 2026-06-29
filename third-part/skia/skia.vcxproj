@@ -51,7 +51,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>.;.;include\config;include\core;src\core;include\gpu;src\gpu;include\images;include\utils;include\utils\win;src\utils;include\ports;include/text;include\effects;src\sfnt;include\pathops;src\image;src\opts;src\lazy;..\..\config;..\..\tools\mkspecs\win32-msvc2017;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;.;include\config;include\core;src\core;include\gpu;src\gpu;include\images;include\utils;include\utils\win;src\utils;include\ports;include/text;include\effects;src\sfnt;include\pathops;src\image;src\opts;src\lazy;..\..\config%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-FS -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
       <AssemblerListingLocation>..\..\obj\release\skia\</AssemblerListingLocation>
       <BrowseInformation>false</BrowseInformation>
@@ -82,7 +82,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>.;.;include\config;include\core;src\core;include\gpu;src\gpu;include\images;include\utils;include\utils\win;src\utils;include\ports;include/text;include\effects;src\sfnt;include\pathops;src\image;src\opts;src\lazy;..\..\config;..\..\tools\mkspecs\win32-msvc2017;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;.;include\config;include\core;src\core;include\gpu;src\gpu;include\images;include\utils;include\utils\win;src\utils;include\ports;include/text;include\effects;src\sfnt;include\pathops;src\image;src\opts;src\lazy;..\..\config%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-FS -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
       <AssemblerListingLocation>..\..\obj\debug\skia\</AssemblerListingLocation>
       <BrowseInformation>false</BrowseInformation>

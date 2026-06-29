@@ -52,7 +52,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>.;.;..\..\soui\include;..\..\utilities\include;..\..\third-part\skia;..\..\third-part\skia\include;..\..\third-part\skia\include\config;..\..\third-part\skia\include\core;..\..\config;..\..\tools\mkspecs\win32-msvc2017;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;.;..\..\soui\include;..\..\utilities\include;..\..\third-part\skia;..\..\third-part\skia\include;..\..\third-part\skia\include\config;..\..\third-part\skia\include\core;..\..\config%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-FS -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
       <AssemblerListingLocation>..\..\obj\release\render-skia64\</AssemblerListingLocation>
       <BrowseInformation>false</BrowseInformation>
@@ -96,7 +96,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>.;.;..\..\soui\include;..\..\utilities\include;..\..\third-part\skia;..\..\third-part\skia\include;..\..\third-part\skia\include\config;..\..\third-part\skia\include\core;..\..\config;..\..\tools\mkspecs\win32-msvc2017;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;.;..\..\soui\include;..\..\utilities\include;..\..\third-part\skia;..\..\third-part\skia\include;..\..\third-part\skia\include\config;..\..\third-part\skia\include\core;..\..\config%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-FS -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
       <AssemblerListingLocation>..\..\obj\debug\render-skia64\</AssemblerListingLocation>
       <BrowseInformation>false</BrowseInformation>
