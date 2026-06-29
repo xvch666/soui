@@ -1,4 +1,4 @@
-﻿//SOUI组件配置
+//SOUI组件配置
 
 #pragma  once
 
@@ -12,6 +12,29 @@
 
 #define COM_IMGDECODER  _T("imgdecoder-gdip")
 
+#ifdef _WIN64
+#ifdef _DEBUG
+#define COM_RENDER_GDI  _T("render-gdi64d.dll")
+#define COM_RENDER_SKIA _T("render-skia64d.dll")
+#define COM_SCRIPT_LUA _T("scriptmodule-lua64d.dll")
+#define COM_TRANSLATOR _T("translator64d.dll")
+#define COM_ZIPRESPROVIDER _T("resprovider-zip64d.dll")
+#define COM_LOG4Z   _T("log4z64d.dll")
+#define COM_7ZIPRESPROVIDER _T("resprovider-7zip64d.dll")
+#define COM_TASKLOOP _T("taskloop64d.dll")
+#define COM_IPCOBJ _T("sipcobject64d.dll")
+#else
+#define COM_RENDER_GDI  _T("render-gdi64.dll")
+#define COM_RENDER_SKIA _T("render-skia64.dll")
+#define COM_SCRIPT_LUA _T("scriptmodule-lua64.dll")
+#define COM_TRANSLATOR _T("translator64.dll")
+#define COM_ZIPRESPROVIDER _T("resprovider-zip64.dll")
+#define COM_LOG4Z   _T("log4z64.dll")
+#define COM_7ZIPRESPROVIDER _T("resprovider-7zip64.dll")
+#define COM_TASKLOOP _T("taskloop64.dll")
+#define COM_IPCOBJ _T("sipcobject64.dll")
+#endif
+#else
 #ifdef _DEBUG
 #define COM_RENDER_GDI  _T("render-gdid.dll")
 #define COM_RENDER_SKIA _T("render-skiad.dll")
@@ -32,7 +55,8 @@
 #define COM_7ZIPRESPROVIDER _T("resprovider-7zip.dll")
 #define COM_TASKLOOP _T("taskloop.dll")
 #define COM_IPCOBJ _T("sipcobject.dll")
-#endif	// _DEBUG
+#endif
+#endif
 
 
 #ifdef LIB_SOUI_COM
@@ -306,10 +330,18 @@ public:
 
     BOOL CreateImgDecoder(IObjRef ** ppObj)
     {
+#ifdef _WIN64
+#ifdef _DEBUG
+        SOUI::SStringT strImgDecoder = m_strImgDecoder+_T("64d.dll");
+#else
+        SOUI::SStringT strImgDecoder = m_strImgDecoder+_T("64.dll");
+#endif
+#else
 #ifdef _DEBUG
         SOUI::SStringT strImgDecoder = m_strImgDecoder+_T("d.dll");
 #else
         SOUI::SStringT strImgDecoder = m_strImgDecoder+_T(".dll");
+#endif
 #endif
         return imgDecLoader.CreateInstance(m_strDllPath+strImgDecoder,ppObj);
     }
