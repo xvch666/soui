@@ -48,12 +48,8 @@
 #ifndef _WIN64
 #ifdef _DEBUG
 #define SYS_NAMED_RESOURCE _T("soui-sys-resourced.dll")
-#pragma comment(lib,"lua-52d")
-#pragma comment(lib,"scriptmodule-luad")
 #else
 #define SYS_NAMED_RESOURCE _T("soui-sys-resource.dll")
-#pragma comment(lib,"lua-52")
-#pragma comment(lib,"scriptmodule-lua")
 #endif
 #else
 #ifdef _DEBUG
@@ -150,7 +146,6 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPTSTR /*
         CAutoRefPtr<IImgDecoderFactory> pImgDecoderFactory; //图片解码器，由imagedecoder-wid.dll模块提供
         CAutoRefPtr<IRenderFactory> pRenderFactory;         //UI渲染模块，由render-gdi.dll或者render-skia.dll提供
         CAutoRefPtr<ITranslatorMgr> trans;                  //多语言翻译模块，由translator.dll提供
-        CAutoRefPtr<IScriptFactory> pScriptLua;              //lua脚本模块，由scriptmodule-lua.dll提供
         CAutoRefPtr<ILog4zManager>  pLogMgr;                //log4z对象
         
 		//演示异步任务。
@@ -314,12 +309,6 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPTSTR /*
                 trans->InstallTranslator(langCN);
             }
         }
-#if (defined(DLL_CORE) || defined(LIB_ALL)) && !defined(_WIN64)
-        //加载LUA脚本模块，注意，脚本模块只有在SOUI内核是以DLL方式编译时才能使用。
-        bLoaded=pComMgr->CreateScrpit_Lua((IObjRef**)&pScriptLua);
-        SASSERT_FMT(bLoaded,_T("load interface [%s] failed!"),_T("scirpt_lua"));
-        theApp->SetScriptFactory(pScriptLua);
-#endif//DLL_CORE
 
         
         //加载系统资源

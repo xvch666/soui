@@ -16,21 +16,17 @@
 #ifdef _DEBUG
 #define COM_RENDER_GDI  _T("render-gdi64d.dll")
 #define COM_RENDER_SKIA _T("render-skia64d.dll")
-#define COM_SCRIPT_LUA _T("scriptmodule-lua64d.dll")
 #define COM_TRANSLATOR _T("translator64d.dll")
 #define COM_ZIPRESPROVIDER _T("resprovider-zip64d.dll")
 #define COM_LOG4Z   _T("log4z64d.dll")
-#define COM_7ZIPRESPROVIDER _T("resprovider-7zip64d.dll")
 #define COM_TASKLOOP _T("taskloop64d.dll")
 #define COM_IPCOBJ _T("sipcobject64d.dll")
 #else
 #define COM_RENDER_GDI  _T("render-gdi64.dll")
 #define COM_RENDER_SKIA _T("render-skia64.dll")
-#define COM_SCRIPT_LUA _T("scriptmodule-lua64.dll")
 #define COM_TRANSLATOR _T("translator64.dll")
 #define COM_ZIPRESPROVIDER _T("resprovider-zip64.dll")
 #define COM_LOG4Z   _T("log4z64.dll")
-#define COM_7ZIPRESPROVIDER _T("resprovider-7zip64.dll")
 #define COM_TASKLOOP _T("taskloop64.dll")
 #define COM_IPCOBJ _T("sipcobject64.dll")
 #endif
@@ -38,21 +34,17 @@
 #ifdef _DEBUG
 #define COM_RENDER_GDI  _T("render-gdid.dll")
 #define COM_RENDER_SKIA _T("render-skiad.dll")
-#define COM_SCRIPT_LUA _T("scriptmodule-luad.dll")
 #define COM_TRANSLATOR _T("translatord.dll")
 #define COM_ZIPRESPROVIDER _T("resprovider-zipd.dll")
 #define COM_LOG4Z   _T("log4zd.dll")
-#define COM_7ZIPRESPROVIDER _T("resprovider-7zipd.dll")
 #define COM_TASKLOOP _T("taskloopd.dll")
 #define COM_IPCOBJ _T("sipcobjectd.dll")
 #else
 #define COM_RENDER_GDI  _T("render-gdi.dll")
 #define COM_RENDER_SKIA _T("render-skia.dll")
-#define COM_SCRIPT_LUA _T("scriptmodule-lua.dll")
 #define COM_TRANSLATOR _T("translator.dll")
 #define COM_ZIPRESPROVIDER _T("resprovider-zip.dll")
 #define COM_LOG4Z   _T("log4z.dll")
-#define COM_7ZIPRESPROVIDER _T("resprovider-7zip.dll")
 #define COM_TASKLOOP _T("taskloop.dll")
 #define COM_IPCOBJ _T("sipcobject.dll")
 #endif
@@ -91,10 +83,6 @@
     #pragma comment(lib,"zlibd")
     #pragma comment(lib,"resprovider-zipd")
 #endif
-#if(SCOM_MASK&scom_mask_resprovider_7z)
-    #pragma comment(lib,"7zd")
-    #pragma comment(lib,"resprovider-7zipd")
-#endif
 #if(SCOM_MASK&scom_mask_translator)
     #pragma comment(lib,"translatord")
 #endif
@@ -132,10 +120,6 @@
 #if(SCOM_MASK&scom_mask_resprovider_zip)
     #pragma comment(lib,"zlib")
     #pragma comment(lib,"resprovider-zip")
-#endif
-#if(SCOM_MASK&scom_mask_resprovider_7z)
-    #pragma comment(lib,"7z")
-    #pragma comment(lib,"resprovider-7zip")
 #endif
 #if(SCOM_MASK&scom_mask_translator)
     #pragma comment(lib,"translator")
@@ -178,10 +162,6 @@ namespace SOUI
     {
         BOOL SCreateInstance(IObjRef **);
     }
-    namespace SCRIPT_LUA
-    {
-        BOOL SCreateInstance(IObjRef **);
-    }
     namespace TRANSLATOR
     {
         BOOL SCreateInstance(IObjRef **);
@@ -190,10 +170,6 @@ namespace SOUI
     {
         BOOL SCreateInstance(IObjRef **);
     }
-	namespace RESPROVIDER_7ZIP
-	{
-		BOOL SCreateInstance(IObjRef **);
-	} 
     namespace LOG4Z
     {
         BOOL SCreateInstance(IObjRef **);
@@ -251,12 +227,6 @@ public:
     }
 #endif
 
-#if(SCOM_MASK&scom_mask_script_lua)
-    BOOL CreateScrpit_Lua(IObjRef **ppObj)
-    {
-        return SOUI::SCRIPT_LUA::SCreateInstance(ppObj);
-    }
-#endif
 
 #if(SCOM_MASK&scom_mask_translator)
     BOOL CreateTranslator(IObjRef **ppObj)
@@ -273,12 +243,6 @@ public:
 #endif
 
 
-#if(SCOM_MASK&scom_mask_resprovider_7z)
-	BOOL CreateResProvider_7ZIP(IObjRef **ppObj)
-	{
-		return SOUI::RESPROVIDER_7ZIP::SCreateInstance(ppObj);
-	}
-#endif
     
 #if(SCOM_MASK&scom_mask_log4z)
     BOOL CreateLog4z(IObjRef **ppObj)
@@ -355,10 +319,6 @@ public:
     {
         return renderLoader.CreateInstance(m_strDllPath+COM_RENDER_SKIA,ppObj);
     }
-    BOOL CreateScrpit_Lua(IObjRef **ppObj)
-    {
-        return scriptLoader.CreateInstance(m_strDllPath+COM_SCRIPT_LUA,ppObj);
-    }
 
     BOOL CreateTranslator(IObjRef **ppObj)
     {
@@ -369,10 +329,6 @@ public:
         return zipResLoader.CreateInstance(m_strDllPath+COM_ZIPRESPROVIDER,ppObj);
     }
 
-	BOOL CreateResProvider_7ZIP(IObjRef **ppObj)
-	{
-		return zip7ResLoader.CreateInstance(m_strDllPath+COM_7ZIPRESPROVIDER, ppObj);
-	}
 	
     BOOL CreateLog4z(IObjRef **ppObj)
     {
@@ -393,10 +349,8 @@ protected:
     SComLoader imgDecLoader;
     SComLoader renderLoader;
     SComLoader transLoader;
-    SComLoader scriptLoader;
     SComLoader zipResLoader;
     SComLoader log4zLoader;
-    SComLoader zip7ResLoader;
 	SComLoader taskLoopLoader;
 	SComLoader ipcLoader;
 

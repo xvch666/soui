@@ -11,40 +11,32 @@
 #ifdef _DEBUG
 #define COM_RENDER_GDI  _T("render-gdi64d.dll")
 #define COM_RENDER_SKIA _T("render-skia64d.dll")
-#define COM_SCRIPT_LUA _T("scriptmodule-lua64d.dll")
 #define COM_TRANSLATOR _T("translator64d.dll")
 #define COM_ZIPRESPROVIDER _T("resprovider-zip64d.dll")
 #define COM_LOG4Z   _T("log4z64d.dll")
-#define COM_7ZIPRESPROVIDER _T("resprovider-7zip64d.dll")
 #define COM_TASKLOOP _T("taskloop64d.dll")
 #else
 #define COM_RENDER_GDI  _T("render-gdi64.dll")
 #define COM_RENDER_SKIA _T("render-skia64.dll")
-#define COM_SCRIPT_LUA _T("scriptmodule-lua64.dll")
 #define COM_TRANSLATOR _T("translator64.dll")
 #define COM_ZIPRESPROVIDER _T("resprovider-zip64.dll")
 #define COM_LOG4Z   _T("log4z64.dll")
-#define COM_7ZIPRESPROVIDER _T("resprovider-7zip64.dll")
 #define COM_TASKLOOP _T("taskloop64.dll")
 #endif
 #else
 #ifdef _DEBUG
 #define COM_RENDER_GDI  _T("render-gdid.dll")
 #define COM_RENDER_SKIA _T("render-skiad.dll")
-#define COM_SCRIPT_LUA _T("scriptmodule-luad.dll")
 #define COM_TRANSLATOR _T("translatord.dll")
 #define COM_ZIPRESPROVIDER _T("resprovider-zipd.dll")
 #define COM_LOG4Z   _T("log4zd.dll")
-#define COM_7ZIPRESPROVIDER _T("resprovider-7zipd.dll")
 #define COM_TASKLOOP _T("taskloopd.dll")
 #else
 #define COM_RENDER_GDI  _T("render-gdi.dll")
 #define COM_RENDER_SKIA _T("render-skia.dll")
-#define COM_SCRIPT_LUA _T("scriptmodule-lua.dll")
 #define COM_TRANSLATOR _T("translator.dll")
 #define COM_ZIPRESPROVIDER _T("resprovider-zip.dll")
 #define COM_LOG4Z   _T("log4z.dll")
-#define COM_7ZIPRESPROVIDER _T("resprovider-7zip.dll")
 #define COM_TASKLOOP _T("taskloop.dll")
 #endif
 #endif
@@ -68,8 +60,6 @@
     #pragma comment(lib,"imgdecoder-gdipd")
     #pragma comment(lib,"translatord")
     #pragma comment(lib,"resprovider-zipd")
-    #pragma comment(lib,"7zd")
-    #pragma comment(lib,"resprovider-7zipd")
     #pragma comment(lib,"log4zd")
 	#pragma comment(lib,"taskloopd")
 #else//_DEBUG
@@ -85,8 +75,6 @@
     #pragma comment(lib,"render-skia")
     #pragma comment(lib,"translator")
     #pragma comment(lib,"resprovider-zip")
-    #pragma comment(lib,"7z")
-    #pragma comment(lib,"resprovider-7zip")
     #pragma comment(lib,"log4z")
 	#pragma comment(lib,"taskloop")
 #endif//_DEBUG
@@ -118,10 +106,6 @@ namespace SOUI
     {
         BOOL SCreateInstance(IObjRef **);
     }
-    namespace SCRIPT_LUA
-    {
-        BOOL SCreateInstance(IObjRef **);
-    }
     namespace TRANSLATOR
     {
         BOOL SCreateInstance(IObjRef **);
@@ -130,10 +114,6 @@ namespace SOUI
     {
         BOOL SCreateInstance(IObjRef **);
     }
-	namespace RESPROVIDER_7ZIP
-	{
-		BOOL SCreateInstance(IObjRef **);
-	} 
     namespace LOG4Z
     {
         BOOL SCreateInstance(IObjRef **);
@@ -180,10 +160,6 @@ public:
     {
         return SOUI::RENDER_SKIA::SCreateInstance(ppObj);
     }
-    BOOL CreateScrpit_Lua(IObjRef **ppObj)
-    {
-        return SOUI::SCRIPT_LUA::SCreateInstance(ppObj);
-    }
 
     BOOL CreateTranslator(IObjRef **ppObj)
     {
@@ -195,10 +171,6 @@ public:
     }
 
 
-	BOOL CreateResProvider_7ZIP(IObjRef **ppObj)
-	{
-		return SOUI::RESPROVIDER_7ZIP::SCreateInstance(ppObj);
-	}
     
     BOOL CreateLog4z(IObjRef **ppObj)
     {
@@ -266,10 +238,6 @@ public:
     {
         return renderLoader.CreateInstance(m_strDllPath+COM_RENDER_SKIA,ppObj);
     }
-    BOOL CreateScrpit_Lua(IObjRef **ppObj)
-    {
-        return scriptLoader.CreateInstance(m_strDllPath+COM_SCRIPT_LUA,ppObj);
-    }
 
     BOOL CreateTranslator(IObjRef **ppObj)
     {
@@ -280,10 +248,6 @@ public:
         return zipResLoader.CreateInstance(m_strDllPath+COM_ZIPRESPROVIDER,ppObj);
     }
 
-	BOOL CreateResProvider_7ZIP(IObjRef **ppObj)
-	{
-		return zip7ResLoader.CreateInstance(m_strDllPath+COM_7ZIPRESPROVIDER, ppObj);
-	}
 	
     BOOL CreateLog4z(IObjRef **ppObj)
     {
@@ -299,10 +263,8 @@ protected:
     SComLoader imgDecLoader;
     SComLoader renderLoader;
     SComLoader transLoader;
-    SComLoader scriptLoader;
     SComLoader zipResLoader;
     SComLoader log4zLoader;
-    SComLoader zip7ResLoader;
 	SComLoader taskLoopLoader;
 
     SOUI::SStringT m_strImgDecoder;
