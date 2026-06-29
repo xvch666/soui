@@ -12,7 +12,6 @@
 #define scom_mask_imgdecoder_stb  (1 << 7)
 #define scom_mask_imgdecoder_wic  (1 << 8)
 
-#define scom_mask_resprovider_zip  (1 << 9)
 
 #define scom_mask_ipcobject   (1<<12)
 

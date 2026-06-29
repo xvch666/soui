@@ -12,14 +12,12 @@
 #define COM_RENDER_GDI  _T("render-gdi64d.dll")
 #define COM_RENDER_SKIA _T("render-skia64d.dll")
 #define COM_TRANSLATOR _T("translator64d.dll")
-#define COM_ZIPRESPROVIDER _T("resprovider-zip64d.dll")
 #define COM_LOG4Z   _T("log4z64d.dll")
 #define COM_TASKLOOP _T("taskloop64d.dll")
 #else
 #define COM_RENDER_GDI  _T("render-gdi64.dll")
 #define COM_RENDER_SKIA _T("render-skia64.dll")
 #define COM_TRANSLATOR _T("translator64.dll")
-#define COM_ZIPRESPROVIDER _T("resprovider-zip64.dll")
 #define COM_LOG4Z   _T("log4z64.dll")
 #define COM_TASKLOOP _T("taskloop64.dll")
 #endif
@@ -28,14 +26,12 @@
 #define COM_RENDER_GDI  _T("render-gdid.dll")
 #define COM_RENDER_SKIA _T("render-skiad.dll")
 #define COM_TRANSLATOR _T("translatord.dll")
-#define COM_ZIPRESPROVIDER _T("resprovider-zipd.dll")
 #define COM_LOG4Z   _T("log4zd.dll")
 #define COM_TASKLOOP _T("taskloopd.dll")
 #else
 #define COM_RENDER_GDI  _T("render-gdi.dll")
 #define COM_RENDER_SKIA _T("render-skia.dll")
 #define COM_TRANSLATOR _T("translator.dll")
-#define COM_ZIPRESPROVIDER _T("resprovider-zip.dll")
 #define COM_LOG4Z   _T("log4z.dll")
 #define COM_TASKLOOP _T("taskloop.dll")
 #endif
@@ -59,7 +55,6 @@
     #pragma comment(lib,"imgdecoder-pngd")
     #pragma comment(lib,"imgdecoder-gdipd")
     #pragma comment(lib,"translatord")
-    #pragma comment(lib,"resprovider-zipd")
     #pragma comment(lib,"log4zd")
 	#pragma comment(lib,"taskloopd")
 #else//_DEBUG
@@ -74,7 +69,6 @@
     #pragma comment(lib,"render-gdi")
     #pragma comment(lib,"render-skia")
     #pragma comment(lib,"translator")
-    #pragma comment(lib,"resprovider-zip")
     #pragma comment(lib,"log4z")
 	#pragma comment(lib,"taskloop")
 #endif//_DEBUG
@@ -107,10 +101,6 @@ namespace SOUI
         BOOL SCreateInstance(IObjRef **);
     }
     namespace TRANSLATOR
-    {
-        BOOL SCreateInstance(IObjRef **);
-    }
-    namespace RESPROVIDER_ZIP
     {
         BOOL SCreateInstance(IObjRef **);
     }
@@ -164,10 +154,6 @@ public:
     BOOL CreateTranslator(IObjRef **ppObj)
     {
         return SOUI::TRANSLATOR::SCreateInstance(ppObj);
-    }
-    BOOL CreateResProvider_ZIP(IObjRef **ppObj)
-    {
-        return SOUI::RESPROVIDER_ZIP::SCreateInstance(ppObj);
     }
 
 
@@ -243,10 +229,6 @@ public:
     {
         return transLoader.CreateInstance(m_strDllPath+COM_TRANSLATOR,ppObj);
     }
-    BOOL CreateResProvider_ZIP(IObjRef **ppObj)
-    {
-        return zipResLoader.CreateInstance(m_strDllPath+COM_ZIPRESPROVIDER,ppObj);
-    }
 
 	
     BOOL CreateLog4z(IObjRef **ppObj)
@@ -263,7 +245,6 @@ protected:
     SComLoader imgDecLoader;
     SComLoader renderLoader;
     SComLoader transLoader;
-    SComLoader zipResLoader;
     SComLoader log4zLoader;
 	SComLoader taskLoopLoader;
 

@@ -43,7 +43,6 @@
 // #define RES_TYPE 1   //从PE资源中加载UI资源
 // #define RES_TYPE 2   //从zip包中加载资源
 
-#include "../components/resprovider-zip/zipresprovider-param.h"
 
 #ifndef _WIN64
 #ifdef _DEBUG
@@ -276,14 +275,6 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPTSTR /*
 #elif (RES_TYPE==1)//从EXE资源加载
         CreateResProvider(RES_PE,(IObjRef**)&pResProvider);
         pResProvider->Init((WPARAM)hInstance,0);
-#elif (RES_TYPE==2)//从ZIP包加载
-        bLoaded=pComMgr->CreateResProvider_ZIP((IObjRef**)&pResProvider);
-        SASSERT_FMT(bLoaded,_T("load interface [%s] failed!"),_T("resprovider_zip"));
-
-        ZIPRES_PARAM param;
-        param.ZipFile(pRenderFactory, _T("uires.zip"),"souizip");
-        bLoaded = pResProvider->Init((WPARAM)&param,0);
-        SASSERT(bLoaded);
 #endif
         //将创建的IResProvider交给SApplication对象
         theApp->AddResProvider(pResProvider);
