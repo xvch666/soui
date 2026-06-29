@@ -1,4 +1,4 @@
-﻿#include <core-def.h>
+#define DLL_CORE
 
 #ifdef DLL_CORE
 #ifdef UTILITIES_EXPORTS
