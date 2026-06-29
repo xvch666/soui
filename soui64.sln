@@ -35,6 +35,10 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "soui-sys-resource64", "soui-sys-resource\soui-sys-resource64.vcxproj", "{B7156336-B6BF-3E3E-B8C4-F925D5A2958A}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "soui64", "soui\soui64.vcxproj", "{C80C921C-EAB6-34A6-8E25-12A201D05E4B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AFC2B510-8F1A-358C-919F-98DCE7CC33CA} = {AFC2B510-8F1A-358C-919F-98DCE7CC33CA}
+		{B7156336-B6BF-3E3E-B8C4-F925D5A2958A} = {B7156336-B6BF-3E3E-B8C4-F925D5A2958A}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imgdecoder-wic64", "components\imgdecoder-wic\imgdecoder-wic64.vcxproj", "{63BDFA01-ED87-3320-99A8-C85EB32E6595}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -42,6 +46,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imgdecoder-wic64", "compone
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "render-gdi64", "components\render-gdi\render-gdi64.vcxproj", "{9DF8A491-ABAA-3F5E-85D9-F8253AEC64A2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AFC2B510-8F1A-358C-919F-98DCE7CC33CA} = {AFC2B510-8F1A-358C-919F-98DCE7CC33CA}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "render-skia64", "components\render-skia\render-skia64.vcxproj", "{3BC06FE7-AEBC-303A-9540-48EE7DDB2142}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -67,6 +74,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imgdecoder-stb64", "compone
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imgdecoder-png64", "components\imgdecoder-png\imgdecoder-png64.vcxproj", "{3BD092E3-67E8-3A67-9C4A-24CDCFE72F2B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{17ECCAD7-89EF-319A-B14F-9C1B102E6307} = {17ECCAD7-89EF-319A-B14F-9C1B102E6307}
+		{3A1AA7C9-53E9-3E77-9F2A-176546FAD92E} = {3A1AA7C9-53E9-3E77-9F2A-176546FAD92E}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imgdecoder-gdip64", "components\imgdecoder-gdip\imgdecoder-gdip64.vcxproj", "{581D6D6E-926B-3926-B4A0-4174ADC0F57C}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -76,6 +87,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imgdecoder-gdip64", "compon
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "scriptmodule-lua64", "components\ScriptModule-LUA\scriptmodule-lua64.vcxproj", "{EB8A7460-96D1-3073-B28F-6A8EDD1175EA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C80C921C-EAB6-34A6-8E25-12A201D05E4B} = {C80C921C-EAB6-34A6-8E25-12A201D05E4B}
+		{D88E04AB-2484-38B8-9CF9-E2C21062D870} = {D88E04AB-2484-38B8-9CF9-E2C21062D870}
+		{AFC2B510-8F1A-358C-919F-98DCE7CC33CA} = {AFC2B510-8F1A-358C-919F-98DCE7CC33CA}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "log4z64", "components\log4z\log4z64.vcxproj", "{2992A4A1-DBE2-3898-BEEC-89003DCE761F}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -84,6 +100,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "log4z64", "components\log4z
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "resprovider-7zip64", "components\resprovider-7zip\resprovider-7zip64.vcxproj", "{AD313A55-626B-3230-8DB5-C01AC8042C5F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3AB3D0E0-20F6-387B-B412-15A926E91C5F} = {3AB3D0E0-20F6-387B-B412-15A926E91C5F}
+		{AFC2B510-8F1A-358C-919F-98DCE7CC33CA} = {AFC2B510-8F1A-358C-919F-98DCE7CC33CA}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TaskLoop64", "components\TaskLoop\TaskLoop64.vcxproj", "{16D6F8BA-82D1-35C7-B704-B1EACA05F500}"
 	ProjectSection(ProjectDependencies) = postProject
