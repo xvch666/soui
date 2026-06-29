@@ -60,7 +60,7 @@
       <ExceptionHandling>Sync</ExceptionHandling>
       <ObjectFileName>..\..\obj\release\mhook64\</ObjectFileName>
       <Optimization>MinSpace</Optimization>
-      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN64;_WIN64;DISABLE_ODPRINTF;WINDOWS_IGNORE_PACKING_MISMATCH;QT_NO_DYNAMIC_CAST;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN64;_CRT_SECURE_NO_WARNINGS;_WIN64;DISABLE_ODPRINTF;WINDOWS_IGNORE_PACKING_MISMATCH;QT_NO_DYNAMIC_CAST;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessToFile>false</PreprocessToFile>
       <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -68,7 +68,9 @@
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
       <WarningLevel>Level3</WarningLevel>
     </ClCompile>
-    <Lib>      <SuppressStartupBanner>true</SuppressStartupBanner>
+    <Lib>
+      <OutputFile>$(OutDir)\mhook64.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
     </Lib>
     <Midl>
       <DefaultCharType>Unsigned</DefaultCharType>
@@ -76,7 +78,7 @@
       <WarningLevel>0</WarningLevel>
     </Midl>
     <ResourceCompile>
-      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN64;_WIN64;DISABLE_ODPRINTF;WINDOWS_IGNORE_PACKING_MISMATCH;QT_NO_DYNAMIC_CAST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN64;_CRT_SECURE_NO_WARNINGS;_WIN64;DISABLE_ODPRINTF;WINDOWS_IGNORE_PACKING_MISMATCH;QT_NO_DYNAMIC_CAST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ResourceOutputFileName>$(OutDir)\$(InputName).res</ResourceOutputFileName>
     </ResourceCompile>
   </ItemDefinitionGroup>
@@ -90,7 +92,7 @@
       <DisableSpecificWarnings>4100;4101;4102;4189;4996;4577;4467;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <ExceptionHandling>Sync</ExceptionHandling>
       <ObjectFileName>..\..\obj\debug\mhook64\</ObjectFileName>
-      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN64;_WIN64;DISABLE_ODPRINTF;WINDOWS_IGNORE_PACKING_MISMATCH;QT_NO_DYNAMIC_CAST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN64;_CRT_SECURE_NO_WARNINGS;_WIN64;DISABLE_ODPRINTF;WINDOWS_IGNORE_PACKING_MISMATCH;QT_NO_DYNAMIC_CAST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessToFile>false</PreprocessToFile>
       <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -98,7 +100,9 @@
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
       <WarningLevel>Level3</WarningLevel>
     </ClCompile>
-    <Lib>      <SuppressStartupBanner>true</SuppressStartupBanner>
+    <Lib>
+      <OutputFile>$(OutDir)\mhook64d.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
     </Lib>
     <Midl>
       <DefaultCharType>Unsigned</DefaultCharType>
@@ -106,7 +110,7 @@
       <WarningLevel>0</WarningLevel>
     </Midl>
     <ResourceCompile>
-      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN64;_WIN64;DISABLE_ODPRINTF;WINDOWS_IGNORE_PACKING_MISMATCH;QT_NO_DYNAMIC_CAST;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN64;_CRT_SECURE_NO_WARNINGS;_WIN64;DISABLE_ODPRINTF;WINDOWS_IGNORE_PACKING_MISMATCH;QT_NO_DYNAMIC_CAST;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ResourceOutputFileName>$(OutDir)\$(InputName).res</ResourceOutputFileName>
     </ResourceCompile>
   </ItemDefinitionGroup>

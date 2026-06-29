@@ -47,14 +47,20 @@
 
 #ifndef _WIN64
 #ifdef _DEBUG
-#define SYS_NAMED_RESOURCE _T("soui-sys-resource.dll")
+#define SYS_NAMED_RESOURCE _T("soui-sys-resourced.dll")
+#pragma comment(lib,"lua-52d")
+#pragma comment(lib,"scriptmodule-luad")
 #else
 #define SYS_NAMED_RESOURCE _T("soui-sys-resource.dll")
-#endif
 #pragma comment(lib,"lua-52")
 #pragma comment(lib,"scriptmodule-lua")
+#endif
+#else
+#ifdef _DEBUG
+#define SYS_NAMED_RESOURCE _T("soui-sys-resource64d.dll")
 #else
 #define SYS_NAMED_RESOURCE _T("soui-sys-resource64.dll")
+#endif
 #endif
 
 #include "../controls.extend/smiley/ssmileyctrl.h"

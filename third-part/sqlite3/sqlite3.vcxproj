@@ -60,7 +60,7 @@
       <ExceptionHandling>Sync</ExceptionHandling>
       <ObjectFileName>..\..\obj\release\sqlite3\</ObjectFileName>
       <Optimization>MinSpace</Optimization>
-      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;SQLITE_ENABLE_COLUMN_METADATA;SQLITE_HAS_CODEC=1;CODEC_TYPE=CODEC_TYPE_AES128;SQLITE_CORE;THREADSAFE;SQLITE_SECURE_DELETE;SQLITE_SOUNDEX;QT_NO_DYNAMIC_CAST;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;SQLITE_ENABLE_COLUMN_METADATA;_CRT_SECURE_NO_WARNINGS;SQLITE_HAS_CODEC=1;CODEC_TYPE=CODEC_TYPE_AES128;SQLITE_CORE;THREADSAFE;SQLITE_SECURE_DELETE;SQLITE_SOUNDEX;QT_NO_DYNAMIC_CAST;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessToFile>false</PreprocessToFile>
       <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -68,7 +68,9 @@
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
       <WarningLevel>Level3</WarningLevel>
     </ClCompile>
-    <Lib>      <SuppressStartupBanner>true</SuppressStartupBanner>
+    <Lib>
+      <OutputFile>$(OutDir)\sqlite3.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
     </Lib>
     <Midl>
       <DefaultCharType>Unsigned</DefaultCharType>
@@ -76,7 +78,7 @@
       <WarningLevel>0</WarningLevel>
     </Midl>
     <ResourceCompile>
-      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;SQLITE_ENABLE_COLUMN_METADATA;SQLITE_HAS_CODEC=1;CODEC_TYPE=CODEC_TYPE_AES128;SQLITE_CORE;THREADSAFE;SQLITE_SECURE_DELETE;SQLITE_SOUNDEX;QT_NO_DYNAMIC_CAST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;SQLITE_ENABLE_COLUMN_METADATA;_CRT_SECURE_NO_WARNINGS;SQLITE_HAS_CODEC=1;CODEC_TYPE=CODEC_TYPE_AES128;SQLITE_CORE;THREADSAFE;SQLITE_SECURE_DELETE;SQLITE_SOUNDEX;QT_NO_DYNAMIC_CAST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ResourceOutputFileName>$(OutDir)\$(InputName).res</ResourceOutputFileName>
     </ResourceCompile>
   </ItemDefinitionGroup>
@@ -90,7 +92,7 @@
       <DisableSpecificWarnings>4100;4101;4102;4189;4996;4577;4467;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <ExceptionHandling>Sync</ExceptionHandling>
       <ObjectFileName>..\..\obj\debug\sqlite3\</ObjectFileName>
-      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;SQLITE_ENABLE_COLUMN_METADATA;SQLITE_HAS_CODEC=1;CODEC_TYPE=CODEC_TYPE_AES128;SQLITE_CORE;THREADSAFE;SQLITE_SECURE_DELETE;SQLITE_SOUNDEX;QT_NO_DYNAMIC_CAST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;SQLITE_ENABLE_COLUMN_METADATA;_CRT_SECURE_NO_WARNINGS;SQLITE_HAS_CODEC=1;CODEC_TYPE=CODEC_TYPE_AES128;SQLITE_CORE;THREADSAFE;SQLITE_SECURE_DELETE;SQLITE_SOUNDEX;QT_NO_DYNAMIC_CAST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessToFile>false</PreprocessToFile>
       <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -98,7 +100,9 @@
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
       <WarningLevel>Level3</WarningLevel>
     </ClCompile>
-    <Lib>      <SuppressStartupBanner>true</SuppressStartupBanner>
+    <Lib>
+      <OutputFile>$(OutDir)\sqlite3d.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
     </Lib>
     <Midl>
       <DefaultCharType>Unsigned</DefaultCharType>
@@ -106,7 +110,7 @@
       <WarningLevel>0</WarningLevel>
     </Midl>
     <ResourceCompile>
-      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;SQLITE_ENABLE_COLUMN_METADATA;SQLITE_HAS_CODEC=1;CODEC_TYPE=CODEC_TYPE_AES128;SQLITE_CORE;THREADSAFE;SQLITE_SECURE_DELETE;SQLITE_SOUNDEX;QT_NO_DYNAMIC_CAST;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;SQLITE_ENABLE_COLUMN_METADATA;_CRT_SECURE_NO_WARNINGS;SQLITE_HAS_CODEC=1;CODEC_TYPE=CODEC_TYPE_AES128;SQLITE_CORE;THREADSAFE;SQLITE_SECURE_DELETE;SQLITE_SOUNDEX;QT_NO_DYNAMIC_CAST;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ResourceOutputFileName>$(OutDir)\$(InputName).res</ResourceOutputFileName>
     </ResourceCompile>
   </ItemDefinitionGroup>
