@@ -1,64 +1,61 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.37411.7 d17.14
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gtest64", "third-part\gtest\gtest64.vcxproj", "{8F7E3163-80F4-383C-B1F8-72439F760177}"
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gtest64", "F:/GITHUB/soui/third-part/gtest\gtest64.vcxproj", "{8F7E3163-80F4-383C-B1F8-72439F760177}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "png64", "third-part\png\png64.vcxproj", "{3A1AA7C9-53E9-3E77-9F2A-176546FAD92E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "png64", "F:/GITHUB/soui/third-part/png\png64.vcxproj", "{3A1AA7C9-53E9-3E77-9F2A-176546FAD92E}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "skia64", "third-part\skia\skia64.vcxproj", "{4F6E75F0-D46A-3964-A27C-C8F78BEF34F7}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "skia64", "F:/GITHUB/soui/third-part/skia\skia64.vcxproj", "{4F6E75F0-D46A-3964-A27C-C8F78BEF34F7}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zlib64", "third-part\zlib\zlib64.vcxproj", "{17ECCAD7-89EF-319A-B14F-9C1B102E6307}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zlib64", "F:/GITHUB/soui/third-part/zlib\zlib64.vcxproj", "{17ECCAD7-89EF-319A-B14F-9C1B102E6307}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lua-5264", "third-part\lua-52\lua-5264.vcxproj", "{D88E04AB-2484-38B8-9CF9-E2C21062D870}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lua-5264", "F:/GITHUB/soui/third-part/lua-52\lua-5264.vcxproj", "{D88E04AB-2484-38B8-9CF9-E2C21062D870}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "smiley64", "third-part\smiley\smiley64.vcxproj", "{D212D346-4AE4-35B7-9A68-3D3C84CD8569}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "smiley64", "F:/GITHUB/soui/third-part/smiley\smiley64.vcxproj", "{D212D346-4AE4-35B7-9A68-3D3C84CD8569}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mhook64", "third-part\mhook\mhook64.vcxproj", "{1E69EF7B-9D48-354B-A52E-F15E3359B1FC}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mhook64", "F:/GITHUB/soui/third-part/mhook\mhook64.vcxproj", "{1E69EF7B-9D48-354B-A52E-F15E3359B1FC}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "7z64", "third-part\7z\7z64.vcxproj", "{3AB3D0E0-20F6-387B-B412-15A926E91C5F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "7z64", "F:/GITHUB/soui/third-part/7z\7z64.vcxproj", "{3AB3D0E0-20F6-387B-B412-15A926E91C5F}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "scintilla64", "third-part\scintilla\scintilla64.vcxproj", "{88ACB70A-AA5A-3FE9-9965-A41B5613BEDD}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "scintilla64", "F:/GITHUB/soui/third-part/scintilla\scintilla64.vcxproj", "{88ACB70A-AA5A-3FE9-9965-A41B5613BEDD}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sqlite364", "third-part\sqlite3\sqlite364.vcxproj", "{FEDC42BD-A64D-3844-867F-771F73D73985}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sqlite364", "F:/GITHUB/soui/third-part/sqlite3\sqlite364.vcxproj", "{FEDC42BD-A64D-3844-867F-771F73D73985}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "jsoncpp64", "third-part\jsoncpp\jsoncpp64.vcxproj", "{74057B55-C86D-3635-A567-52B9DB8D6A36}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "jsoncpp64", "F:/GITHUB/soui/third-part/jsoncpp\jsoncpp64.vcxproj", "{74057B55-C86D-3635-A567-52B9DB8D6A36}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SkMatrix64", "third-part\skmatrix\SkMatrix64.vcxproj", "{BBFD18DC-BE8B-3E0E-87B5-02AD6CBA8E34}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SkMatrix64", "F:/GITHUB/soui/third-part/skmatrix\SkMatrix64.vcxproj", "{BBFD18DC-BE8B-3E0E-87B5-02AD6CBA8E34}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "utilities64", "utilities\utilities64.vcxproj", "{AFC2B510-8F1A-358C-919F-98DCE7CC33CA}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "utilities64", "F:/GITHUB/soui/utilities\utilities64.vcxproj", "{AFC2B510-8F1A-358C-919F-98DCE7CC33CA}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "soui-sys-resource64", "soui-sys-resource\soui-sys-resource64.vcxproj", "{B7156336-B6BF-3E3E-B8C4-F925D5A2958A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "soui-sys-resource64", "F:/GITHUB/soui/soui-sys-resource\soui-sys-resource64.vcxproj", "{B7156336-B6BF-3E3E-B8C4-F925D5A2958A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "soui64", "soui\soui64.vcxproj", "{C80C921C-EAB6-34A6-8E25-12A201D05E4B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "soui64", "F:/GITHUB/soui/soui\soui64.vcxproj", "{C80C921C-EAB6-34A6-8E25-12A201D05E4B}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imgdecoder-wic64", "components\imgdecoder-wic\imgdecoder-wic64.vcxproj", "{63BDFA01-ED87-3320-99A8-C85EB32E6595}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imgdecoder-wic64", "F:/GITHUB/soui/components/imgdecoder-wic\imgdecoder-wic64.vcxproj", "{63BDFA01-ED87-3320-99A8-C85EB32E6595}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "render-gdi64", "components\render-gdi\render-gdi64.vcxproj", "{9DF8A491-ABAA-3F5E-85D9-F8253AEC64A2}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "render-gdi64", "F:/GITHUB/soui/components/render-gdi\render-gdi64.vcxproj", "{9DF8A491-ABAA-3F5E-85D9-F8253AEC64A2}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "render-skia64", "components\render-skia\render-skia64.vcxproj", "{3BC06FE7-AEBC-303A-9540-48EE7DDB2142}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "render-skia64", "F:/GITHUB/soui/components/render-skia\render-skia64.vcxproj", "{3BC06FE7-AEBC-303A-9540-48EE7DDB2142}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "translator64", "components\translator\translator64.vcxproj", "{9F3495FD-019F-376A-8483-676074DB29A3}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "translator64", "F:/GITHUB/soui/components/translator\translator64.vcxproj", "{9F3495FD-019F-376A-8483-676074DB29A3}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "resprovider-zip64", "components\resprovider-zip\resprovider-zip64.vcxproj", "{1CF0FBC1-F21B-3FD8-AA35-60FB61BE6B28}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "resprovider-zip64", "F:/GITHUB/soui/components/resprovider-zip\resprovider-zip64.vcxproj", "{1CF0FBC1-F21B-3FD8-AA35-60FB61BE6B28}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imgdecoder-stb64", "components\imgdecoder-stb\imgdecoder-stb64.vcxproj", "{210171D2-C0A9-3EB6-A921-C3810DD909CB}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imgdecoder-stb64", "F:/GITHUB/soui/components/imgdecoder-stb\imgdecoder-stb64.vcxproj", "{210171D2-C0A9-3EB6-A921-C3810DD909CB}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imgdecoder-png64", "components\imgdecoder-png\imgdecoder-png64.vcxproj", "{3BD092E3-67E8-3A67-9C4A-24CDCFE72F2B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imgdecoder-png64", "F:/GITHUB/soui/components/imgdecoder-png\imgdecoder-png64.vcxproj", "{3BD092E3-67E8-3A67-9C4A-24CDCFE72F2B}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imgdecoder-gdip64", "components\imgdecoder-gdip\imgdecoder-gdip64.vcxproj", "{581D6D6E-926B-3926-B4A0-4174ADC0F57C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imgdecoder-gdip64", "F:/GITHUB/soui/components/imgdecoder-gdip\imgdecoder-gdip64.vcxproj", "{581D6D6E-926B-3926-B4A0-4174ADC0F57C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "scriptmodule-lua64", "components\ScriptModule-LUA\scriptmodule-lua64.vcxproj", "{EB8A7460-96D1-3073-B28F-6A8EDD1175EA}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "scriptmodule-lua64", "F:/GITHUB/soui/components/ScriptModule-LUA\scriptmodule-lua64.vcxproj", "{EB8A7460-96D1-3073-B28F-6A8EDD1175EA}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "log4z64", "components\log4z\log4z64.vcxproj", "{2992A4A1-DBE2-3898-BEEC-89003DCE761F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "log4z64", "F:/GITHUB/soui/components/log4z\log4z64.vcxproj", "{2992A4A1-DBE2-3898-BEEC-89003DCE761F}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "resprovider-7zip64", "components\resprovider-7zip\resprovider-7zip64.vcxproj", "{AD313A55-626B-3230-8DB5-C01AC8042C5F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "resprovider-7zip64", "F:/GITHUB/soui/components/resprovider-7zip\resprovider-7zip64.vcxproj", "{AD313A55-626B-3230-8DB5-C01AC8042C5F}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TaskLoop64", "components\TaskLoop\TaskLoop64.vcxproj", "{16D6F8BA-82D1-35C7-B704-B1EACA05F500}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TaskLoop64", "F:/GITHUB/soui/components/TaskLoop\TaskLoop64.vcxproj", "{16D6F8BA-82D1-35C7-B704-B1EACA05F500}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SIpcObject64", "components\SIpcObject\SIpcObject64.vcxproj", "{99598086-F182-3F88-A561-0700D0C53FA8}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SIpcObject64", "F:/GITHUB/soui/components/SIpcObject\SIpcObject64.vcxproj", "{99598086-F182-3F88-A561-0700D0C53FA8}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "demo64", "demo\demo64.vcxproj", "{BDB8D922-CC77-3572-880E-2A340E0E2452}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "demo64", "F:/GITHUB/soui/demo\demo64.vcxproj", "{BDB8D922-CC77-3572-880E-2A340E0E2452}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -183,10 +180,8 @@ Global
 		{BDB8D922-CC77-3572-880E-2A340E0E2452}.Release|x64.ActiveCfg = Release|x64
 		{BDB8D922-CC77-3572-880E-2A340E0E2452}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {C7099A8E-4FEF-4BE6-90DF-05BE719E5D10}
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
 	EndGlobalSection
 EndGlobal
