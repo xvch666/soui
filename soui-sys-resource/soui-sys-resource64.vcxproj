@@ -77,7 +77,7 @@
       <LinkDLL>true</LinkDLL>
       <LinkIncremental>false</LinkIncremental>
       <NoEntryPoint>true</NoEntryPoint>
-      <OutputFile>$(OutDir)\soui-sys-resource.dll</OutputFile>
+      <OutputFile>$(OutDir)\soui-sys-resource64.dll</OutputFile>
       <RandomizedBaseAddress>true</RandomizedBaseAddress>
       <SubSystem>Windows</SubSystem>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -117,7 +117,7 @@
       <IgnoreImportLibrary>true</IgnoreImportLibrary>
       <LinkDLL>true</LinkDLL>
       <NoEntryPoint>true</NoEntryPoint>
-      <OutputFile>$(OutDir)\soui-sys-resourced.dll</OutputFile>
+      <OutputFile>$(OutDir)\soui-sys-resource64d.dll</OutputFile>
       <RandomizedBaseAddress>true</RandomizedBaseAddress>
       <SubSystem>Windows</SubSystem>
       <SuppressStartupBanner>true</SuppressStartupBanner>
