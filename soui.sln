@@ -18,8 +18,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "smiley", "third-part\smiley
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mhook", "third-part\mhook\mhook.vcxproj", "{DC887740-07D4-36BF-9C39-0F07576B6A60}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "scintilla", "third-part\scintilla\scintilla.vcxproj", "{DEDD4C18-FFF6-3CA2-8491-8CD7BC9B84BC}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sqlite3", "third-part\sqlite3\sqlite3.vcxproj", "{BC6984AE-7C6E-3EC2-917A-551F78559407}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "jsoncpp", "third-part\jsoncpp\jsoncpp.vcxproj", "{A14ED41A-AA2E-3900-BF47-D06A4A1F38BD}"
@@ -105,10 +103,6 @@ Global
 		{DC887740-07D4-36BF-9C39-0F07576B6A60}.Debug|Win32.Build.0 = Debug|Win32
 		{DC887740-07D4-36BF-9C39-0F07576B6A60}.Release|Win32.ActiveCfg = Release|Win32
 		{DC887740-07D4-36BF-9C39-0F07576B6A60}.Release|Win32.Build.0 = Release|Win32
-		{DEDD4C18-FFF6-3CA2-8491-8CD7BC9B84BC}.Debug|Win32.ActiveCfg = Debug|Win32
-		{DEDD4C18-FFF6-3CA2-8491-8CD7BC9B84BC}.Debug|Win32.Build.0 = Debug|Win32
-		{DEDD4C18-FFF6-3CA2-8491-8CD7BC9B84BC}.Release|Win32.ActiveCfg = Release|Win32
-		{DEDD4C18-FFF6-3CA2-8491-8CD7BC9B84BC}.Release|Win32.Build.0 = Release|Win32
 		{BC6984AE-7C6E-3EC2-917A-551F78559407}.Debug|Win32.ActiveCfg = Debug|Win32
 		{BC6984AE-7C6E-3EC2-917A-551F78559407}.Debug|Win32.Build.0 = Debug|Win32
 		{BC6984AE-7C6E-3EC2-917A-551F78559407}.Release|Win32.ActiveCfg = Release|Win32

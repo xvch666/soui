@@ -18,8 +18,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "smiley64", "third-part\smil
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mhook64", "third-part\mhook\mhook64.vcxproj", "{1E69EF7B-9D48-354B-A52E-F15E3359B1FC}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "scintilla64", "third-part\scintilla\scintilla64.vcxproj", "{88ACB70A-AA5A-3FE9-9965-A41B5613BEDD}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sqlite364", "third-part\sqlite3\sqlite364.vcxproj", "{FEDC42BD-A64D-3844-867F-771F73D73985}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "jsoncpp64", "third-part\jsoncpp\jsoncpp64.vcxproj", "{74057B55-C86D-3635-A567-52B9DB8D6A36}"
@@ -119,10 +117,6 @@ Global
 		{1E69EF7B-9D48-354B-A52E-F15E3359B1FC}.Debug|x64.Build.0 = Debug|x64
 		{1E69EF7B-9D48-354B-A52E-F15E3359B1FC}.Release|x64.ActiveCfg = Release|x64
 		{1E69EF7B-9D48-354B-A52E-F15E3359B1FC}.Release|x64.Build.0 = Release|x64
-		{88ACB70A-AA5A-3FE9-9965-A41B5613BEDD}.Debug|x64.ActiveCfg = Debug|x64
-		{88ACB70A-AA5A-3FE9-9965-A41B5613BEDD}.Debug|x64.Build.0 = Debug|x64
-		{88ACB70A-AA5A-3FE9-9965-A41B5613BEDD}.Release|x64.ActiveCfg = Release|x64
-		{88ACB70A-AA5A-3FE9-9965-A41B5613BEDD}.Release|x64.Build.0 = Release|x64
 		{FEDC42BD-A64D-3844-867F-771F73D73985}.Debug|x64.ActiveCfg = Debug|x64
 		{FEDC42BD-A64D-3844-867F-771F73D73985}.Debug|x64.Build.0 = Debug|x64
 		{FEDC42BD-A64D-3844-867F-771F73D73985}.Release|x64.ActiveCfg = Release|x64
