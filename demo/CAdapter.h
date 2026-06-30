@@ -46,7 +46,7 @@ public:
 	bool OnCbxSelChange(EventCBSelChange *pEvt)
 	{
 		SComboBox *pCbx = sobj_cast<SComboBox>(pEvt->sender);
-		int iItem = pCbx->GetRoot()->GetUserData();
+		int iItem = (int)pCbx->GetRoot()->GetUserData();
 		m_pCbxSel[iItem] = pCbx->GetCurSel();
 		return true;
 	}
@@ -54,7 +54,7 @@ public:
 	bool OnButtonClick(EventCmd *pEvt)
 	{
 		SButton *pBtn = sobj_cast<SButton>(pEvt->sender);
-		int iItem = pBtn->GetRoot()->GetUserData();
+		int iItem = (int)pBtn->GetRoot()->GetUserData();
 		SMessageBox(NULL, SStringT().Format(_T("button of %d item was clicked"), iItem), _T("haha"), MB_OK);
 		return true;
 	}
@@ -141,7 +141,7 @@ public:
 	bool OnButtonClick(EventArgs *pEvt)
 	{
 		SButton *pBtn = sobj_cast<SButton>(pEvt->sender);
-		int iItem = pBtn->GetUserData();
+		int iItem = (int)pBtn->GetUserData();
 		SMessageBox(NULL, SStringT().Format(_T("button of %d item was clicked"), iItem), _T("haha"), MB_OK);
 		return true;
 	}
@@ -244,7 +244,7 @@ public:
 
 	virtual int getCount()
 	{
-		return m_softInfo.GetCount()*NUMSCALE;
+		return (int)(m_softInfo.GetCount()*NUMSCALE);
 	}
 
 	SStringT getSizeText(DWORD dwSize)
@@ -281,7 +281,7 @@ public:
 	bool OnButtonClick(EventArgs *pEvt)
 	{
 		SButton *pBtn = sobj_cast<SButton>(pEvt->sender);
-		int iItem = pBtn->GetUserData();
+		int iItem = (int)pBtn->GetUserData();
 
 		if (SMessageBox(NULL, SStringT().Format(_T("Are you sure to uninstall the selected [%d] software?"), iItem), _T("uninstall"), MB_OKCANCEL | MB_ICONQUESTION) == IDOK)
 		{//删除一条记录
@@ -409,7 +409,7 @@ public:
 	bool OnButtonClick(EventArgs *pEvt)
 	{
 		SButton *pBtn = sobj_cast<SButton>(pEvt->sender);
-		int iItem = pBtn->GetRoot()->GetUserData();
+		int iItem = (int)pBtn->GetRoot()->GetUserData();
 		SMessageBox(NULL, SStringT().Format(_T("button of %d item was clicked"), iItem), _T("haha"), MB_OK);
 		return true;
 	}

@@ -1,4 +1,4 @@
-﻿/**
+/**
  * pugixml parser - version 1.2
  * --------------------------------------------------------
  * Copyright (C) 2006-2012, by Arseny Kapoulkine (arseny.kapoulkine@gmail.com)
@@ -5582,7 +5582,7 @@ namespace pugi
         {
             STRMAP::CPair *p = strMap.GetNext(pos);
             p->m_value = idx++;
-            nRet += impl::strlength(p->m_key)+1;
+            nRet += (int)(impl::strlength(p->m_key)+1);
         }
         return nRet;
     }
@@ -5642,7 +5642,7 @@ namespace pugi
     void _write_str(const STRMAP & strMap,const char_t * str,FILE * f)
     {
         //size_t sz = strMap.GetCount();
-        int nIdxSize= index_size(strMap.GetCount());
+        int nIdxSize= index_size((int)strMap.GetCount());
         int nIdx = 0;
         
 #ifdef PUGIXML_WCHAR_MODE

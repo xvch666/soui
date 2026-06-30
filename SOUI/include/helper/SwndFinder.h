@@ -43,7 +43,7 @@ namespace SOUI
 			key.sep.findByName=fi.findByName;
 
 			lRet += key.key;
-			return lRet;
+			return (ULONG)lRet;
 		}
 
 		static bool CompareElements(INARGTYPE element1, INARGTYPE element2)

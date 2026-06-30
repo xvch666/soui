@@ -103,7 +103,7 @@ namespace SOUI
 
     int SPropertyItemBase::ChildrenCount() const
     {
-        return m_childs.GetCount();
+        return (int)m_childs.GetCount();
     }
 
     BOOL SPropertyItemBase::RemoveChild( IPropertyItem * pChild )

@@ -1,4 +1,4 @@
-﻿/****************************************************************************************
+/****************************************************************************************
 * ///////////////////////////////////////////////////////////////////////////////////////
 *	Original Filename: 	HTTPServer.cpp
 *
@@ -200,7 +200,7 @@ BOOL CHTTPServer::ParseRequest(string szRequest, string &szResponse, BOOL &bKeep
 	//
 	// Check Method
 	//
-	n = szRequest.find(" ", 0);
+	n = (int)szRequest.find(" ", 0);
 	if(n != string::npos)
 	{
 		szMethod = szRequest.substr(0, n);
@@ -209,7 +209,7 @@ BOOL CHTTPServer::ParseRequest(string szRequest, string &szResponse, BOOL &bKeep
 			//
 			// Get file name
 			// 
-			int n1 = szRequest.find(" ", n + 1);
+			int n1 = (int)szRequest.find(" ", n + 1);
 			if(n != string::npos)
 			{
 				szFileName = szRequest.substr(n + 1, n1 - n - 1);
@@ -239,14 +239,14 @@ BOOL CHTTPServer::ParseRequest(string szRequest, string &szResponse, BOOL &bKeep
 	//
 	// Determine Connection type
 	//
-	n = szRequest.find("\nConnection: Keep-Alive", 0);
+	n = (int)szRequest.find("\nConnection: Keep-Alive", 0);
 	if(n != string::npos)
 		bKeepAlive = TRUE;
 
 	//
 	// Figure out content type
 	//
-	int nPointPos = szFileName.rfind(".");
+	int nPointPos = (int)szFileName.rfind(".");
 	if(nPointPos != string::npos)
 	{
 		szFileExt = szFileName.substr(nPointPos + 1, szFileName.size());
@@ -311,8 +311,8 @@ BOOL CHTTPServer::ParseRequest(string szRequest, string &szResponse, BOOL &bKeep
 		}
 		szStatusCode = "404 Resource not found";
 
-		sprintf(pResponseHeader, "HTTP/1.0 %s\r\nContent-Length: %d\r\nContent-Type: text/html\r\nDate: %s\r\nServer: %s\r\n\r\n%s",
-			szStatusCode.c_str(), szNotFoundMessage.size(), szDT, SERVERNAME, szNotFoundMessage.c_str());
+		sprintf(pResponseHeader, "HTTP/1.0 %s\r\nContent-Length: %Iu\r\nContent-Type: text/html\r\nDate: %s\r\nServer: %s\r\n\r\n%s",
+			szStatusCode.c_str(), (size_t)szNotFoundMessage.size(), szDT, SERVERNAME, szNotFoundMessage.c_str());
 		bKeepAlive = FALSE;  
 	}
 

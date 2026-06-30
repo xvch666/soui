@@ -168,7 +168,7 @@ namespace SOUI
 			int nOffset=GetScrollPos(TRUE);
 			if(iItem<iFirstVisible) nOffset=(iItem-iFirstVisible)*m_nItemHeight;
 			else nOffset=(iItem - iFirstVisible-nVisibleItems +1)*m_nItemHeight;
-			nOffset-=nOffset%m_nItemHeight;//ÈÃµ±Ç°ĞĞ¸ÕºÃÏÔÊ¾
+			nOffset-=nOffset%m_nItemHeight;//è®©å½“å‰è¡Œåˆšå¥½æ˜¾ç¤º
 			OnScroll(TRUE,SB_THUMBPOSITION,nOffset + GetScrollPos(TRUE));
 		}
 	}
@@ -262,7 +262,7 @@ namespace SOUI
 		ReleaseRenderTarget(pRT);
 	}
 
-	//×Ô¶¯ĞŞ¸ÄptµÄÎ»ÖÃÎªÏà¶Ôµ±Ç°ÏîµÄÆ«ÒÆÁ¿
+	//è‡ªåŠ¨ä¿®æ”¹ptçš„ä½ç½®ä¸ºç›¸å¯¹å½“å‰é¡¹çš„åç§»é‡
 	int SListCtrlEx::HitTest(CPoint &pt)
 	{
 		CRect rcHead;
@@ -322,7 +322,7 @@ namespace SOUI
 		COLORREF crItemBg = m_crItemBg;  
 
 		if ( iItem == m_iSelItem) 
-		{//ºÍÏÂÃæÄÇ¸öifµÄÌõ¼ş·Ö¿ª£¬²Å»áÓĞselºÍhotµÄÇø±ğ
+		{//å’Œä¸‹é¢é‚£ä¸ªifçš„æ¡ä»¶åˆ†å¼€ï¼Œæ‰ä¼šæœ‰selå’Œhotçš„åŒºåˆ«
 			if (m_pItemSkin != NULL)
 				nBgImg = 2;
 			else if (CR_INVALID != m_crItemSelBg)
@@ -338,11 +338,11 @@ namespace SOUI
 		}
 
 
-		//»æÖÆ±³¾°
-		if (CR_INVALID != crItemBg)//ÏÈ»­±³¾°
+		//ç»˜åˆ¶èƒŒæ™¯
+		if (CR_INVALID != crItemBg)//å…ˆç”»èƒŒæ™¯
 			pRT->FillSolidRect( rcItem, crItemBg);
 
-		if (m_pItemSkin != NULL)//ÓĞskin£¬Ôò¸²¸Ç±³¾°
+		if (m_pItemSkin != NULL)//æœ‰skinï¼Œåˆ™è¦†ç›–èƒŒæ™¯
 			m_pItemSkin->Draw(pRT, rcItem, nBgImg);
 
 		CRect rcCol(rcItem);
@@ -362,7 +362,7 @@ namespace SOUI
 			while(pChild)
 			{
 				if (iIndex == hdi.iOrder )
-				{//¸üĞÂÁĞÎ»ÖÃ
+				{//æ›´æ–°åˆ—ä½ç½®
 					rcVisiblePart.OffsetRect( - rcItem.TopLeft()  );
 					pChild->Move(rcVisiblePart);
 					break;
@@ -378,7 +378,7 @@ namespace SOUI
 		evt.pItem = m_arrItems[iItem];
 		evt.iItem = iItem;
 		FireEvent(evt);
-		if (!m_bHotTrack)//²»ĞèÒªÈÈ×·×Ù
+		if (!m_bHotTrack)//ä¸éœ€è¦çƒ­è¿½è¸ª
 			(m_arrItems[iItem])->ModifyItemState(0,WndState_Hover);
 		m_arrItems[iItem]->Draw(pRT,rcItem);
 	}
@@ -407,7 +407,7 @@ namespace SOUI
 		m_pHeader->GetEventSet()->subscribeEvent(EventHeaderItemChanging::EventID, Subscriber(&SListCtrlEx::OnHeaderSizeChanging,this));
 		m_pHeader->GetEventSet()->subscribeEvent(EventHeaderItemSwap::EventID, Subscriber(&SListCtrlEx::OnHeaderSwap,this));
 
-		//´´½¨¾ØĞÎÑ¡Ôñ¿ò
+		//åˆ›å»ºçŸ©å½¢é€‰æ‹©æ¡†
 		m_pWndRectangle=new SWindow();
 		SApplication::getSingleton().SetSwndDefAttr(m_pWndRectangle);
 		InsertChild(m_pWndRectangle,ICWND_FIRST);
@@ -416,7 +416,7 @@ namespace SOUI
 		if (m_strSelectRangeSkin.GetLength())
 		{
 			m_pWndRectangle->SetAttribute(L"skin",m_strSelectRangeSkin,TRUE);
-			m_bMultiSelection = TRUE;//ÉèÖÃÁËselectskin£¬×Ô¶¯¿ªÆô¶àÑ¡Ä£Ê½
+			m_bMultiSelection = TRUE;//è®¾ç½®äº†selectskinï¼Œè‡ªåŠ¨å¼€å¯å¤šé€‰æ¨¡å¼
 		} 
 		m_pWndRectangle->SetAttribute(L"msgTransparent",L"1",TRUE);
 
@@ -450,7 +450,7 @@ namespace SOUI
 		if(evt1.bCancel) return ;
 
 
-		if (checkBox) {//checkboxÇ¿Ñ¡
+		if (checkBox) {//checkboxå¼ºé€‰
 			m_arrItems[nNewSel]->SetCheck(!m_arrItems[nNewSel]->IsChecked());
 			m_iSelItem = m_arrItems[nNewSel]->IsChecked()?nNewSel:-1;
 			RedrawItem(nNewSel); 
@@ -471,7 +471,7 @@ namespace SOUI
 					RedrawItem(nNewSel); 
 				}
 			} else if ((m_bMultiSelection || m_bCheckBox) && GetKeyState(VK_SHIFT) < 0) {
-				//shiftÑ¡
+				//shifté€‰
 				if (nNewSel != -1) {
 					if (nOldSel == -1)
 						nOldSel = 0;
@@ -493,7 +493,7 @@ namespace SOUI
 					}
 				}
 			} else if ((m_bMultiSelection || m_bCheckBox) && m_bStartSelect) {
-				//¿òÑ¡
+				//æ¡†é€‰
 				CPoint ptTopLeft = CPoint(m_rcWnd.left,m_rcWnd.top);
 				CPoint ptBottomRight = CPoint(m_rcWnd.right,m_rcWnd.bottom);
 				int iTop = HitTest(ptTopLeft);
@@ -537,7 +537,7 @@ namespace SOUI
 						RedrawItem(i);
 				}
 			}
-			else {//Ò»°ãÊÇÊó±êµã»÷£¬µ¥Ñ¡
+			else {//ä¸€èˆ¬æ˜¯é¼ æ ‡ç‚¹å‡»ï¼Œå•é€‰
 				m_iSelItem = -1;
 				for (int i = 0; i < GetItemCount(); i++)
 				{ 
@@ -678,7 +678,7 @@ lblEnd:
 
 	BOOL SListCtrlEx::OnItemGetRect(SItemPanel *pItem,CRect &rcItem )
 	{
-		int iItem=pItem->GetItemIndex();
+		int iItem=(int)pItem->GetItemIndex();
 		rcItem=GetItemRect(iItem);
 		return TRUE;
 	}
@@ -725,13 +725,13 @@ lblEnd:
 			if (m_bMouseDown == TRUE)
 			{
 				CRect rcClient = GetListRect();
-				CPoint ptTmp = pt; //±£Ö¤ÂäÔÚClientÖ®ÄÚ
+				CPoint ptTmp = pt; //ä¿è¯è½åœ¨Clientä¹‹å†…
 				ptTmp.x = max(ptTmp.x,rcClient.left);
 				ptTmp.y = max(ptTmp.y,rcClient.top);
 				ptTmp.x = min(ptTmp.x,rcClient.right);
 				ptTmp.y = min(ptTmp.y,rcClient.bottom);
 
-				CPoint pt1,pt2;//·ÖÅä×óÉÏºÍÓÒÏÂµÄµã
+				CPoint pt1,pt2;//åˆ†é…å·¦ä¸Šå’Œå³ä¸‹çš„ç‚¹
 				pt1.x = min(m_ptTmp.x,ptTmp.x);
 				pt1.y = min(m_ptTmp.y,ptTmp.y);
 				pt2.x = max(m_ptTmp.x,ptTmp.x);
@@ -742,9 +742,9 @@ lblEnd:
 				m_rcWnd.right = pt2.x;
 				m_rcWnd.bottom = pt2.y; 
 				if (m_rcWnd.Width() > 5 || m_rcWnd.Height() > 5)
-				{//Õâ²ÅËãÍÏÀ­¿ò
+				{//è¿™æ‰ç®—æ‹–æ‹‰æ¡†
 					m_bStartSelect = TRUE; 
-					m_iSelItem = -1;//¶¼¿ªÊ¼ÍÏÀ­ÁË£¬¾Í·ÅÆúµ¥¶ÀÄÇÌõÁË
+					m_iSelItem = -1;//éƒ½å¼€å§‹æ‹–æ‹‰äº†ï¼Œå°±æ”¾å¼ƒå•ç‹¬é‚£æ¡äº†
 					m_pWndRectangle->Move(m_rcWnd);
 					m_pWndRectangle->SetVisible(TRUE);
 					int iHover = HitTest(pt);
@@ -791,7 +791,7 @@ lblEnd:
 				}
 			}
 			if(uMsg==WM_LBUTTONDOWN && m_iSelItem!=-1 && m_iSelItem != m_iHoverItem )
-			{//Ñ¡ÔñÒ»¸öĞÂĞĞµÄÊ±ºòÔ­ÓĞĞĞÊ§È¥½¹µã
+			{//é€‰æ‹©ä¸€ä¸ªæ–°è¡Œçš„æ—¶å€™åŸæœ‰è¡Œå¤±å»ç„¦ç‚¹
 				m_arrItems[m_iSelItem]->GetFocusManager()->SetFocusedHwnd(0);
 			}
 			if(m_iHoverItem!=-1)
@@ -822,7 +822,7 @@ lblEnd:
 		return lRet;
 	}
 
-	//Í¬²½ÔÚSItemPanelÖĞµÄindexÊôĞÔ£¬ÔÚÖ´ĞĞÁË²åÈë£¬É¾³ıµÈ²Ù×÷ºóÊ¹ÓÃ
+	//åŒæ­¥åœ¨SItemPanelä¸­çš„indexå±æ€§ï¼Œåœ¨æ‰§è¡Œäº†æ’å…¥ï¼Œåˆ é™¤ç­‰æ“ä½œåä½¿ç”¨
 	void SListCtrlEx::UpdatePanelsIndex(UINT nFirst,UINT nLast)
 	{
 		for(UINT i=nFirst;i<m_arrItems.GetCount() && i<nLast;i++)
@@ -863,7 +863,7 @@ lblEnd:
 	void SListCtrlEx::OnViewOriginChanged( CPoint ptOld,CPoint ptNew )
 	{
 		if(m_iSelItem!=-1 && GetContainer()->GetFocus()==m_swnd)
-		{//ÕâÀïĞèÒªÖØĞÂÉèÖÃÒ»ÏÂÑ¡ÖĞĞĞµÄ½¹µã×´Ì¬À´¸üĞÂ¹â±êÎ»ÖÃ
+		{//è¿™é‡Œéœ€è¦é‡æ–°è®¾ç½®ä¸€ä¸‹é€‰ä¸­è¡Œçš„ç„¦ç‚¹çŠ¶æ€æ¥æ›´æ–°å…‰æ ‡ä½ç½®
 			m_arrItems[m_iSelItem]->DoFrameEvent(WM_KILLFOCUS,0,0);
 			m_arrItems[m_iSelItem]->DoFrameEvent(WM_SETFOCUS,0,0);
 		}
@@ -890,7 +890,7 @@ lblEnd:
 		else
 		{
 			m_ptOrigin.x = m_siHoz.nPos;
-			//  ´¦ÀíÁĞÍ·¹ö¶¯
+			//  å¤„ç†åˆ—å¤´æ»šåŠ¨
 			UpdateHeaderCtrl();
 		}
 		Invalidate();
@@ -898,7 +898,7 @@ lblEnd:
 
 		if (uCode==SB_THUMBTRACK)
 			ScrollUpdate();
-		//  ÖØĞÂ¼ÆËã¿Í»§Çø¼°·Ç¿Í»§Çø
+		//  é‡æ–°è®¡ç®—å®¢æˆ·åŒºåŠéå®¢æˆ·åŒº
 		SSendMessage(WM_NCCALCSIZE);
 		return bRet;
 	}
@@ -934,7 +934,7 @@ lblEnd:
 		__super::UpdateChildrenPosition();
 		UpdateHeaderCtrl();
 	}
-	//»ùÀàSScrollViewµÄUpdateScrollBarĞèÒªÉùÃ÷³Évirtual
+	//åŸºç±»SScrollViewçš„UpdateScrollBaréœ€è¦å£°æ˜æˆvirtual
 	void SListCtrlEx::UpdateScrollBar()
 	{
 		CSize szView;
@@ -942,16 +942,16 @@ lblEnd:
 		szView.cy = GetItemCount()*m_nItemHeight;
 
 		CRect rcClient;
-		SWindow::GetClientRect(&rcClient);//²»¼ÆËã¹ö¶¯Ìõ´óĞ¡
+		SWindow::GetClientRect(&rcClient);//ä¸è®¡ç®—æ»šåŠ¨æ¡å¤§å°
 		rcClient.top+=m_nHeaderHeight;
 
 		CSize size = rcClient.Size();
-		//  ¹Ø±Õ¹ö¶¯Ìõ
+		//  å…³é—­æ»šåŠ¨æ¡
 		m_wBarVisible = SSB_NULL;
 
 		if (size.cy<szView.cy || (size.cy<szView.cy+GetSbWidth() && size.cx<szView.cx))
 		{
-			//  ĞèÒª×İÏò¹ö¶¯Ìõ
+			//  éœ€è¦çºµå‘æ»šåŠ¨æ¡
 			m_wBarVisible |= SSB_VERT;
 			m_siVer.nMin  = 0;
 			m_siVer.nMax  = szView.cy-1;
@@ -959,7 +959,7 @@ lblEnd:
 
 			if (size.cx-GetSbWidth() < szView.cx)
 			{
-				//  ĞèÒªºáÏò¹ö¶¯Ìõ
+				//  éœ€è¦æ¨ªå‘æ»šåŠ¨æ¡
 				m_wBarVisible |= SSB_HORZ;
 
 				m_siHoz.nMin  = 0;
@@ -968,7 +968,7 @@ lblEnd:
 			}
 			else
 			{
-				//  ²»ĞèÒªºáÏò¹ö¶¯Ìõ
+				//  ä¸éœ€è¦æ¨ªå‘æ»šåŠ¨æ¡
 				m_siHoz.nPage = size.cx;
 				m_siHoz.nMin  = 0;
 				m_siHoz.nMax  = m_siHoz.nPage-1;
@@ -978,7 +978,7 @@ lblEnd:
 		}
 		else
 		{
-			//  ²»ĞèÒª×İÏò¹ö¶¯Ìõ
+			//  ä¸éœ€è¦çºµå‘æ»šåŠ¨æ¡
 			m_siVer.nPage = size.cy;
 			m_siVer.nMin  = 0;
 			m_siVer.nMax  = size.cy-1;
@@ -987,7 +987,7 @@ lblEnd:
 
 			if (size.cx < szView.cx)
 			{
-				//  ĞèÒªºáÏò¹ö¶¯Ìõ
+				//  éœ€è¦æ¨ªå‘æ»šåŠ¨æ¡
 				m_wBarVisible |= SSB_HORZ;
 				m_siHoz.nMin  = 0;
 				m_siHoz.nMax  = szView.cx-1;
@@ -995,7 +995,7 @@ lblEnd:
 			}
 			else
 			{
-				//  ²»ĞèÒªºáÏò¹ö¶¯Ìõ
+				//  ä¸éœ€è¦æ¨ªå‘æ»šåŠ¨æ¡
 				m_siHoz.nPage = size.cx;
 				m_siHoz.nMin  = 0;
 				m_siHoz.nMax  = m_siHoz.nPage-1;
@@ -1007,10 +1007,10 @@ lblEnd:
 		SetScrollPos(TRUE, m_siVer.nPos, TRUE);
 		SetScrollPos(FALSE, m_siHoz.nPos, TRUE);
 
-		//  ÖØĞÂ¼ÆËã¿Í»§Çø¼°·Ç¿Í»§Çø
+		//  é‡æ–°è®¡ç®—å®¢æˆ·åŒºåŠéå®¢æˆ·åŒº
 		SSendMessage(WM_NCCALCSIZE);
 
-		//  ¸ù¾İĞèÒªµ÷ÕûÔ­µãÎ»ÖÃ
+		//  æ ¹æ®éœ€è¦è°ƒæ•´åŸç‚¹ä½ç½®
 		if (HasScrollBar(FALSE) && m_ptOrigin.x+m_siHoz.nPage>szView.cx)
 		{
 			m_ptOrigin.x = szView.cx-m_siHoz.nPage;

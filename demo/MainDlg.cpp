@@ -568,7 +568,7 @@ void CMainDlg::OnBtnInsertGif2RE()
                     pSmiley->Insert2Richedit(ole);
                 }else
                 {
-                    UINT uRet = SMessageBox(m_hWnd,_T("可能是因为没有向系统注册表情COM模块。\\n现在注册吗?"),_T("创建表情OLE对象失败"),MB_YESNO|MB_ICONSTOP);
+                    UINT uRet = (UINT)SMessageBox(m_hWnd,_T("可能是因为没有向系统注册表情COM模块。\\n现在注册吗?"),_T("创建表情OLE对象失败"),MB_YESNO|MB_ICONSTOP);
                     if(uRet == IDYES)
                     {
                         HMODULE hMod = LoadLibrary(_T("sosmiley.dll"));
@@ -759,7 +759,7 @@ void CMainDlg::OnMclvCtxMenu(EventArgs *pEvt)
         SItemPanel *pItem = pListview->HitTest(pt2);
         if(pItem)
         {
-            int iItem = pItem->GetItemIndex();
+            int iItem = (int)pItem->GetItemIndex();
             pListview->SetSel(iItem);
             SLOGFMTD(_T("当前选中行:%d"),iItem);
         }
@@ -783,7 +783,7 @@ void CMainDlg::OnMclvEventOfPanel(EventArgs * pEvt)
 		EventItemPanelDbclick *e3 = sobj_cast<EventItemPanelDbclick>(e2->pOrgEvt);
 		SItemPanel *pSender = sobj_cast<SItemPanel>(e3->sender);
 		SASSERT(pSender);
-		int iItem = pSender->GetItemIndex();
+		int iItem = (int)pSender->GetItemIndex();
 		SMessageBox(m_hWnd, SStringT().Format(_T("double click item:%d"), iItem+1), _T("haha"), MB_OK | MB_ICONSTOP);
 	}
 }
@@ -1006,7 +1006,7 @@ void CMainDlg::OnCbxInterpolotorChange(EventArgs *e)
 	if(e2->nCurSel!=-1)
 	{
 		SStringT str = pCbx->GetLBText(e2->nCurSel);
-		str=str.Mid(1,str.GetLength()-1-strlen("Interpolator"));
+		str=str.Mid(1,str.GetLength()-1-(int)strlen("Interpolator"));
 		IInterpolator * pInterpolator = CREATEINTERPOLATOR(S_CT2W(str));
 		if(pInterpolator)
 		{
@@ -1060,7 +1060,7 @@ void CMainDlg::OnCtrlPageClick(EventArgs *e)
 void CMainDlg::OnMcLvHeaderRelayout(EventArgs * e)
 {
 	SHeaderCtrl *pHeader = sobj_cast<SHeaderCtrl>(e->sender);
-	int nItems = pHeader->GetItemCount();
+	int nItems = (int)pHeader->GetItemCount();
 	if (nItems > 1)
 	{
 		CRect rc = pHeader->GetItemRect(pHeader->GetOriItemIndex(0));

@@ -36,9 +36,9 @@ void CGenericServer::GetStats(StatisticsTag &st)
 	st.nTotalRecv = Stats.nTotalRecv;
 	st.nTotalSent = Stats.nTotalSent;
 	st.nTotalHits = Stats.nTotalHits;
-	st.nVisitors  = Visitors.size();
+	st.nVisitors  = (long)Visitors.size();
 	EnterCriticalSection(&_cs);
-	st.nClientsConnected = ThreadList.size();
+	st.nClientsConnected = (long)ThreadList.size();
 	LeaveCriticalSection(&_cs);
 }
 
@@ -317,7 +317,7 @@ UINT __stdcall CGenericServer::AcceptThread(LPVOID pParam)
 	if(pGenericServer->ShutdownEvent == WSA_INVALID_EVENT)
 	{
 		pGenericServer->LogMessage(LOGFILENAME, _T("WSACreateEvent(...) failure for ShutdownEvent"), _T("AcceptThread"), WSAGetLastError());
-		pGenericServer->CleanupThread(NULL, NULL, NULL, s);
+		pGenericServer->CleanupThread(NULL, NULL, NULL, (DWORD)s);
 		return THREADEXIT_SUCCESS;
 	}		
 
@@ -540,8 +540,8 @@ unsigned __stdcall CGenericServer::ClientThread(LPVOID pParam)
 				dwBytesSent = 0;
 				do
 				{
-					Buffer.len = (szResponse.size() - dwBytesSent) >= SENDBLOCK ? SENDBLOCK : szResponse.size() - dwBytesSent;	
-					Buffer.buf = (char*)((DWORD)szResponse.c_str() + dwBytesSent);
+					Buffer.len = ((ULONG)(szResponse.size() - dwBytesSent)) >= SENDBLOCK ? SENDBLOCK : (ULONG)(szResponse.size() - dwBytesSent);	
+					Buffer.buf = (char*)((ULONG_PTR)szResponse.c_str() + dwBytesSent);
 
 					result = WSASend(
 						s,                                                
@@ -597,8 +597,8 @@ unsigned __stdcall CGenericServer::ClientThread(LPVOID pParam)
 			//
 			do
 			{
-				Buffer.len = (szResponse.size() - dwBytesSent) >= SENDBLOCK ? SENDBLOCK : szResponse.size() - dwBytesSent;	
-				Buffer.buf = (char*)((DWORD)szResponse.c_str() + dwBytesSent);
+				Buffer.len = ((ULONG)(szResponse.size() - dwBytesSent)) >= SENDBLOCK ? SENDBLOCK : (ULONG)(szResponse.size() - dwBytesSent);	
+				Buffer.buf = (char*)((ULONG_PTR)szResponse.c_str() + dwBytesSent);
 				
 				result = WSASend(
 					s,                                                

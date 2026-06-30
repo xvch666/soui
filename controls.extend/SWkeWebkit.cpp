@@ -94,7 +94,7 @@ namespace SOUI
         if(!m_pWebView) return 1;
         m_pWebView->setBufHandler(this);
         m_pWebView->loadURL(m_strUrl);
-        SetTimer(TM_TICKER,50); //由于timer不够及时，idle又限制了只在当前的消息循环中有效，使用timer和onidle一起更新浏览器
+        SetTimer(TM_TICKER,50); //鐢变簬timer涓嶅鍙婃椂锛宨dle鍙堥檺鍒朵簡鍙湪褰撳墠鐨勬秷鎭惊鐜腑鏈夋晥锛屼娇鐢╰imer鍜宱nidle涓�璧锋洿鏂版祻瑙堝櫒
         return 0;
 	}
 
@@ -148,7 +148,7 @@ namespace SOUI
 		if (HIWORD(lParam) & KF_EXTENDED)
 			flags |= WKE_EXTENDED;
 
-		SetMsgHandled(m_pWebView->keyDown(wParam, flags, false));
+		SetMsgHandled(m_pWebView->keyDown((unsigned int)wParam, flags, false));
 		return 0;
 	}
 
@@ -160,7 +160,7 @@ namespace SOUI
 		if (HIWORD(lParam) & KF_EXTENDED)
 			flags |= WKE_EXTENDED;
 
-		SetMsgHandled(m_pWebView->keyUp(wParam, flags, false));
+		SetMsgHandled(m_pWebView->keyUp((unsigned int)wParam, flags, false));
 		return 0;
 	}
 
@@ -201,7 +201,7 @@ namespace SOUI
 
 	LRESULT SWkeWebkit::OnChar( UINT uMsg, WPARAM wParam,LPARAM lParam )
 	{
-		unsigned int charCode = wParam;
+		unsigned int charCode = (unsigned int)wParam;
 		unsigned int flags = 0;
 		if (HIWORD(lParam) & KF_REPEAT)
 			flags |= WKE_REPEAT;

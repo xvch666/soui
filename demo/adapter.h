@@ -31,7 +31,7 @@ public:
 	virtual int getCount()
 	{
 		//SAutoLock autolock(updatalock);
-		return m_musicList.GetCount();
+		return (int)m_musicList.GetCount();
 	}
 	void add1(musicItem &item)
 	{
@@ -151,7 +151,7 @@ public:
 
 	int GetColCount()
 	{
-		return m_colNames.GetCount();
+		return (int)m_colNames.GetCount();
 	}
 
 	virtual bool SwapItem(long pos, SList<long> &sellist) override
@@ -182,7 +182,7 @@ public:
 		_pos = sellist.GetHeadPosition();
 		while (_pos)
 		{
-			sellist.SetAt(_pos, offsetpos++);
+			sellist.SetAt(_pos, (long)(offsetpos++));
 			sellist.GetNext(_pos);
 		}
 		return true;

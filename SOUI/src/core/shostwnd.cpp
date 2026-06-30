@@ -1545,7 +1545,7 @@ LRESULT SHostWnd::OnGetObject(UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
 #ifdef SOUI_ENABLE_ACC
 	IAccessible * pAcc = NULL;
-	DWORD dwObjectId = lParam;
+	DWORD dwObjectId = (DWORD)lParam;
 	if (dwObjectId == OBJID_CLIENT) {
 		pAcc = GetAccessible();
 	} else{

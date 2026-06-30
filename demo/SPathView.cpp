@@ -27,7 +27,7 @@ namespace SOUI
 			m_lstPoints.Add(pts[i]);
 		}
 		m_path->reset();
-		m_path->addPoly(m_lstPoints.GetData(),m_lstPoints.GetCount(),false);
+		m_path->addPoly(m_lstPoints.GetData(),(int)m_lstPoints.GetCount(),false);
 		OnPathChanged();
 	}
 
@@ -39,7 +39,7 @@ namespace SOUI
 		pt -= rc.TopLeft();
 		m_lstPoints.Add(pt);
 		m_path->reset();
-		m_path->addPoly(m_lstPoints.GetData(),m_lstPoints.GetCount(),false);
+		m_path->addPoly(m_lstPoints.GetData(),(int)m_lstPoints.GetCount(),false);
 		OnPathChanged();
 	}
 
@@ -59,7 +59,7 @@ namespace SOUI
 			{
 				m_lstPoints.RemoveAt(i);
 				m_path->reset();
-				m_path->addPoly(m_lstPoints.GetData(),m_lstPoints.GetCount(),false);
+				m_path->addPoly(m_lstPoints.GetData(),(int)m_lstPoints.GetCount(),false);
 				OnPathChanged();
 				break;
 			}
@@ -74,7 +74,7 @@ namespace SOUI
 			return;
 		}
 
-		int count = m_lstPoints.GetCount();
+		int count = (int)m_lstPoints.GetCount();
 		CRect rc=GetClientRect();
 
 		if(count>1)

@@ -110,7 +110,7 @@ namespace SOUI
 		{
 			if(msg.message == WM_QUIT)
 			{
-				PostQuitMessage(msg.wParam);
+				PostQuitMessage((int)msg.wParam);
 				return false;
 			}
 			DispatchMessage(&msg);

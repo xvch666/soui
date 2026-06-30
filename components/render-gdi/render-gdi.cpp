@@ -564,7 +564,7 @@ namespace SOUI
 
     HRESULT SRenderTarget_GDI::MeasureText( LPCTSTR pszText,int cchLen, SIZE *psz )
     {
-        if(cchLen<0) cchLen = _tcslen(pszText);
+        if(cchLen<0) cchLen = (int)_tcslen(pszText);
         ::GetTextExtentPoint32(m_hdc,pszText,cchLen,psz);
         return S_OK;
     }
@@ -663,7 +663,7 @@ namespace SOUI
 
     HRESULT SRenderTarget_GDI::TextOut( int x, int y, LPCTSTR lpszString, int nCount)
     {
-        if(nCount<0) nCount = _tcslen(lpszString);
+        if(nCount<0) nCount = (int)_tcslen(lpszString);
         SIZE sz;
         MeasureText(lpszString,nCount,&sz);
         RECT rc={x,y,x+sz.cx,y+sz.cy};

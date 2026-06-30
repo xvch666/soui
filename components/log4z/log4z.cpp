@@ -178,7 +178,7 @@ public:
 		size_t pos = ftell(_file);
 		fseek(_file,0,SEEK_END);
 		size_t ret = ftell(_file);
-		fseek(_file,pos,SEEK_SET);
+		fseek(_file,(long)pos,SEEK_SET);
 		return ret;
 	}
 public:
@@ -1672,7 +1672,7 @@ bool LogerManager::openLogger(LogData * pLog)
             pLogger->_outfile = false;
             return false;
         }
-		pLogger->_curWriteLen = pLogger->_handle.size();
+		pLogger->_curWriteLen = (unsigned int)pLogger->_handle.size();
         return true;
     }
     return true;
@@ -1819,7 +1819,7 @@ void LogerManager::run()
 
 			if(m_pListener)
 			{
-				m_pListener->onOutputLog(pLog->_level,pLog->_filter.c_str(),pLog->_content.c_str(),pLog->_content.length(),pLog->_time);
+				m_pListener->onOutputLog(pLog->_level,pLog->_filter.c_str(),pLog->_content.c_str(),(int)pLog->_content.length(),pLog->_time);
 			}
 
             if (curLogger._display)

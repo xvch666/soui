@@ -56,7 +56,7 @@
       <AssemblerListingLocation>..\..\obj\release\skia64\</AssemblerListingLocation>
       <BrowseInformation>false</BrowseInformation>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <DisableSpecificWarnings>4100;4101;4102;4189;4996;4244;4800;4100;4577;4467;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4100;4101;4102;4189;4996;4244;4800;4100;4577;4467;4267;4312;4334;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <ExceptionHandling>Sync</ExceptionHandling>
       <ObjectFileName>..\..\obj\release\skia64\</ObjectFileName>
       <Optimization>MinSpace</Optimization>
@@ -89,7 +89,7 @@
       <AssemblerListingLocation>..\..\obj\debug\skia64\</AssemblerListingLocation>
       <BrowseInformation>false</BrowseInformation>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <DisableSpecificWarnings>4100;4101;4102;4189;4996;4244;4800;4100;4577;4467;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4100;4101;4102;4189;4996;4244;4800;4100;4577;4467;4267;4312;4334;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <ExceptionHandling>Sync</ExceptionHandling>
       <ObjectFileName>..\..\obj\debug\skia64\</ObjectFileName>
       <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN64;_CRT_SECURE_NO_WARNINGS;_WIN64;SK_IGNORE_ETC1_SUPPORT;QT_NO_DYNAMIC_CAST;%(PreprocessorDefinitions)</PreprocessorDefinitions>

@@ -350,7 +350,7 @@ namespace SOUI
 
 	HRESULT SRenderTarget_Skia::DrawText( LPCTSTR pszText,int cchLen,LPRECT pRc,UINT uFormat)
 	{
-		if(cchLen<0) cchLen= _tcslen(pszText);
+		if(cchLen<0) cchLen= (int)_tcslen(pszText);
 		if(cchLen==0)
         {
             if(uFormat & DT_CALCRECT)
@@ -520,7 +520,7 @@ namespace SOUI
             pts[i].fX = (SkScalar)pPt[i].x;
             pts[i].fY = (SkScalar)pPt[i].y;
         }
-        SkPoint::Offset(pts,nCount,m_ptOrg);
+        SkPoint::Offset(pts,(int)nCount,m_ptOrg);
 
         SkPaint paint;
 		SetPaintXferMode(paint,m_xferMode);
@@ -546,7 +546,7 @@ namespace SOUI
 
 	HRESULT SRenderTarget_Skia::TextOut( int x, int y, LPCTSTR lpszString, int nCount)
 	{
-		if(nCount<0) nCount= _tcslen(lpszString);
+		if(nCount<0) nCount= (int)_tcslen(lpszString);
 		SStringW strW=S_CT2W(SStringT(lpszString,nCount));
         SkPaint     txtPaint = m_curFont->GetPaint();
         SkPaint::FontMetrics metrics;
@@ -1488,7 +1488,7 @@ namespace SOUI
         if(!m_hBmp) return E_OUTOFMEMORY;
         m_bitmap.setPixels(pBits);
 
-        const int stride = m_bitmap.rowBytes();
+        const int stride = (int)m_bitmap.rowBytes();
         pFrame->CopyPixels(NULL, stride, stride * uHei,
             reinterpret_cast<BYTE*>(m_bitmap.getPixels()));
         return S_OK;
@@ -1525,7 +1525,7 @@ namespace SOUI
         if(!m_hBmp) return E_OUTOFMEMORY;
         m_bitmap.setPixels(pBits);
         
-        const int stride = m_bitmap.rowBytes();
+        const int stride = (int)m_bitmap.rowBytes();
         pFrame->CopyPixels(NULL, stride, stride * uHei,
             reinterpret_cast<BYTE*>(m_bitmap.getPixels()));
         return S_OK;
@@ -2140,7 +2140,7 @@ namespace SOUI
 	void SPath_Skia::addString(LPCTSTR pszText,int nLen, float x,float y, const IFont *pFont)
 	{
 		const SFont_Skia *pFontSkia = (const SFont_Skia *)pFont;
-		if(nLen < 0) nLen = _tcslen(pszText);
+		if(nLen < 0) nLen = (int)_tcslen(pszText);
 		SkPaint paint;
 		paint.setTextEncoding(SkPaint::kUTF16_TextEncoding);
 		paint.setTypeface(pFontSkia->GetFont());

@@ -201,7 +201,7 @@ namespace SOUI
             m_xmlStyle.append_copy(xmlTabStyle);
         }
 
-        pugi::xml_node xmlTabs = xmlNode.child(L"tabs");//À˘”–tab∂º±ÿ–Î‘⁄tabs±Í«©ƒ⁄
+        pugi::xml_node xmlTabs = xmlNode.child(L"tabs");//ÊâÄÊúâtabÈÉΩÂøÖÈ°ªÂú®tabsÊ†áÁ≠æÂÜÖ
 
         for (pugi::xml_node xmlChild=xmlTabs.first_child(); xmlChild; xmlChild=xmlChild.next_sibling())
         {
@@ -209,7 +209,7 @@ namespace SOUI
                 continue;
             SChromeTab * pTab = new SChromeTab(this);
             SASSERT(pTab);
-            pTab->m_iOrder = pTab->m_iTabIndex = m_lstTabOrder.GetCount();
+            pTab->m_iOrder = pTab->m_iTabIndex = (int)m_lstTabOrder.GetCount();
             m_lstTabOrder.Add(pTab);
             InsertChild(pTab);
             if(xmlTabStyle)
@@ -233,7 +233,7 @@ namespace SOUI
             m_xmlStyle.append_copy(xmlCloseBtn);
 
             for(UINT i = 0;i<m_lstTabOrder.GetCount();i++)
-            {//◊‘∂Ø≤Â»Î“ª∏ˆcloseBtn
+            {//Ëá™Âä®ÊèíÂÖ•‰∏Ä‰∏™closeBtn
                 if(!m_lstTabOrder[i]->m_bAllowClose) continue;
                 
                 SWindow *pBtn = SApplication::getSingleton().CreateWindowByName(SImageButton::GetClassName());
@@ -260,7 +260,7 @@ namespace SOUI
                 nTabWid = m_nDesiredSize;
             }else
             {
-                nTabWid = (rcClient.Width()-szBtnNew.cx) / m_lstTabOrder.GetCount();
+                nTabWid = (rcClient.Width()-szBtnNew.cx) / (int)m_lstTabOrder.GetCount();
             }
             rcTab.right = rcTab.left + nTabWid;
             for(UINT i=0;i<m_lstTabOrder.GetCount();i++)
@@ -282,7 +282,7 @@ namespace SOUI
                 nTabHei = m_nDesiredSize;
             }else
             {
-                nTabHei = (rcClient.Height()-szBtnNew.cx) / m_lstTabOrder.GetCount();
+                nTabHei = (rcClient.Height()-szBtnNew.cx) / (int)m_lstTabOrder.GetCount();
             }
             rcTab.bottom = rcTab.top + nTabHei;
             for(UINT i=0;i<m_lstTabOrder.GetCount();i++)
@@ -382,10 +382,10 @@ namespace SOUI
         
 
         if(iPos<0 || iPos > (int)m_lstTabOrder.GetCount()) 
-            iPos = m_lstTabOrder.GetCount();
+            iPos = (int)m_lstTabOrder.GetCount();
 
         pNewTab->m_iOrder = iPos;
-        pNewTab->m_iTabIndex = m_lstTabOrder.GetCount();
+        pNewTab->m_iTabIndex = (int)m_lstTabOrder.GetCount();
 
         for(int i=0;i<(int)m_lstTabOrder.GetCount();i++)
         {
@@ -416,7 +416,7 @@ namespace SOUI
             pBtn->GetEventSet()->subscribeEvent(EventCmd::EventID,Subscriber(&SChromeTabCtrl::OnBtnCloseTabClick,this));
         }
         
-        //≤Â»ÎµΩ≥ı ºŒª÷√
+        //ÊèíÂÖ•Âà∞ÂàùÂßã‰ΩçÁΩÆ
         CRect rcInit=rcLeft;
         rcInit.left=rcInit.right;
         rcInit.right=rcInit.left+m_nDesiredSize;
@@ -508,7 +508,7 @@ namespace SOUI
 
     int SChromeTabCtrl::GetTabCount() const
     {
-        return m_lstTabOrder.GetCount();
+        return (int)m_lstTabOrder.GetCount();
     }
     
     SWindow* SChromeTabCtrl::GetTabWindow(int iPos)

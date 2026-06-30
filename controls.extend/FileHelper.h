@@ -8,7 +8,7 @@
 * @author     SOUI group   
 * @date       2014/08/03
 * 
-* Describe    ÊµÏÖÁ½¸öÎÄ¼şÏà¹ØµÄhelper
+* Describe    å®ç°ä¸¤ä¸ªæ–‡ä»¶ç›¸å…³çš„helper
 */
 
 #pragma once
@@ -16,12 +16,12 @@
 #include <commdlg.h>
 /**
 * BuildFilePath
-* @brief    µİ¹é´´½¨×ÓÄ¿Â¼
-* @param    LPCTSTR pszCurPath --  ´´½¨Â·¾¶µÄÆğÊ¼Î»ÖÃ
-* @param    LPCTSTR pszNewPath --  ĞÂÂ·¾¶
-* @param    BOOL bPath --  pszNewPathÊÇÒ»¸öÂ·¾¶±êÊ¶
-* @return   BOOL -- true´´½¨³É¹¦
-* Describe  pszNewPathÖ¸ÏòÒ»¸öÎÄ¼şÃûÊ±£¬Ö»´´½¨ÎÄ¼şÂ·¾¶²¿·Ö
+* @brief    é€’å½’åˆ›å»ºå­ç›®å½•
+* @param    LPCTSTR pszCurPath --  åˆ›å»ºè·¯å¾„çš„èµ·å§‹ä½ç½®
+* @param    LPCTSTR pszNewPath --  æ–°è·¯å¾„
+* @param    BOOL bPath --  pszNewPathæ˜¯ä¸€ä¸ªè·¯å¾„æ ‡è¯†
+* @return   BOOL -- trueåˆ›å»ºæˆåŠŸ
+* Describe  pszNewPathæŒ‡å‘ä¸€ä¸ªæ–‡ä»¶åæ—¶ï¼Œåªåˆ›å»ºæ–‡ä»¶è·¯å¾„éƒ¨åˆ†
 */    
 inline BOOL BuildFilePath(LPCTSTR pszCurPath,LPCTSTR pszNewPath,BOOL bPath=TRUE)
 {
@@ -32,7 +32,7 @@ inline BOOL BuildFilePath(LPCTSTR pszCurPath,LPCTSTR pszNewPath,BOOL bPath=TRUE)
     _tcscpy_s(szNewPath,_countof(szNewPath),pszNewPath);
     if(bPath)
     {
-        int nLen=_tcslen(szNewPath);
+        int nLen=(int)_tcslen(szNewPath);
         if(szNewPath[nLen-1]!=_T('\\'))
             _tcscat(szNewPath,_T("\\"));
     }

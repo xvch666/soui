@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #define SOUI_MSG_MAP_BEGIN()                                       \
 protected:                                                          \
@@ -136,7 +136,7 @@ protected:                                                          \
     if (uMsg == WM_TIMER2) \
 { \
     SetMsgHandled(TRUE); \
-    func(wParam); \
+    func((char)wParam); \
     lResult = 0; \
     if(IsMsgHandled()) \
     return TRUE; \

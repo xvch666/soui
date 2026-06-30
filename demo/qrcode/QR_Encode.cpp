@@ -614,7 +614,7 @@ BOOL CQR_Encode::EncodeData(int nLevel, int nVersion, BOOL bAutoExtent, int nMas
 	m_nMaskingNo = nMaskingNo;
 
 	// 如果没有长度由数据采集指定lstrlen
-	int ncLength = ncSource > 0 ? ncSource : strlen(lpsSource);
+	int ncLength = ncSource > 0 ? ncSource : (int)strlen(lpsSource);
 
 	if (ncLength == 0)
 		return FALSE; // 无数据

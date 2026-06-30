@@ -1,10 +1,15 @@
-﻿
+
 #define WIN32_LEAN_AND_MEAN             // Exclude rarely-used stuff from Windows headers
 #include <windows.h>
 #include "imgdecoder-stb.h"
 
+// stb_image 是第三方单文件库, 其内部在 x64 下存在 int->指针的类型转换(C4312);
+// 用 pragma 局部屏蔽, 避免修改第三方源码。
+#pragma warning(push)
+#pragma warning(disable:4312)
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
+#pragma warning(pop)
 
 namespace SOUI
 {
@@ -45,7 +50,7 @@ namespace SOUI
         if(!pBuf) return 0;
 
         int w=0,h=0;
-        unsigned char *data = stbi_load_from_memory((stbi_uc const *)pBuf,bufLen,&w,&h,NULL,4);
+        unsigned char *data = stbi_load_from_memory((stbi_uc const *)pBuf,(int)bufLen,&w,&h,NULL,4);
         if(!data)
         {
             return 0;
