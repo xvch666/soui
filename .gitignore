@@ -46,4 +46,6 @@ Ankh.NoLoad
 
 #Soui
 demos
+#Soui build script transient dirs
+build_logs/
 .vs/
