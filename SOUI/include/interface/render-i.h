@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include <unknown/obj-ref-i.h>
 #include <sobject/Sobject.hpp>
@@ -1065,43 +1065,69 @@ namespace SOUI
 	};
 
 
-    /**
-    * @struct     IRenderTarget
-    * @brief      RenderTarget对象
-    * 
-    * Describe    实现各位渲染接口并创建设备相关资源
-    */
-    struct IRenderTarget: public IObjRef, public SObject
+    //////////////////////////////////////////////////////////////////////////
+    //  Capability interfaces (ISP split).
+    //  IRenderTarget aggregates all of them. New code may program against the
+    //  narrow interface it needs (e.g. IRenderText&) while existing call sites
+    //  keep using IRenderTarget* unchanged.
+    //////////////////////////////////////////////////////////////////////////
+
+    /** @brief GDI-style object factories: pen / brush / region. */
+    struct IRenderResources
     {
-        virtual HRESULT CreateCompatibleRenderTarget(SIZE szTarget,IRenderTarget **ppRenderTarget)=0;
         virtual HRESULT CreatePen(int iStyle,COLORREF cr,int cWidth,IPen ** ppPen)=0;
         virtual HRESULT CreateSolidColorBrush(COLORREF cr,IBrush ** ppBrush)=0;
         virtual HRESULT CreateBitmapBrush( IBitmap *pBmp,IBrush ** ppBrush )=0;
-		virtual HRESULT CreateRegion( IRegion ** ppRegion )=0;
+        virtual HRESULT CreateRegion( IRegion ** ppRegion )=0;
+    };
 
+    /** @brief Surface lifecycle: resize and raw HDC interop. */
+    struct IRenderSurface
+    {
         virtual HRESULT Resize(SIZE sz)=0;
+        //两个兼容GDI操作的接口
+        virtual HDC GetDC(UINT uFlag=0)=0;
+        virtual void ReleaseDC(HDC hdc) =0;
+    };
 
+    /** @brief Coordinate system: viewport origin and transform matrix. */
+    struct IRenderTransform
+    {
         virtual HRESULT OffsetViewportOrg(int xOff, int yOff, LPPOINT lpPoint=NULL)=0;
         virtual HRESULT GetViewportOrg(LPPOINT lpPoint) =0;
         virtual HRESULT SetViewportOrg(POINT pt) =0;
+        virtual HRESULT SetTransform(const IxForm * pXForm,IxForm *pOldXFrom=NULL) = 0;
+        virtual HRESULT GetTransform(IxForm * pXForm) const = 0;
+    };
 
+    /** @brief Clipping region / rect / path management. */
+    struct IRenderClip
+    {
         virtual HRESULT PushClipRect(LPCRECT pRect,UINT mode=RGN_AND)=0;
         virtual HRESULT PushClipRegion(IRegion *pRegion,UINT mode=RGN_AND)=0;
         virtual HRESULT PopClip()=0;
-
         virtual HRESULT ExcludeClipRect(LPCRECT pRc)=0;
         virtual HRESULT IntersectClipRect(LPCRECT pRc)=0;
-
         virtual HRESULT SaveClip(int *pnState)=0;
         virtual HRESULT RestoreClip(int nState=-1)=0;
-
         virtual HRESULT GetClipRegion(IRegion **ppRegion)=0;
         virtual HRESULT GetClipBox(LPRECT prc)=0;
+		virtual HRESULT ClipPath(const IPath * path, UINT mode, bool doAntiAlias = false) = 0;
+    };
 
+    /** @brief Text measurement and output. */
+    struct IRenderText
+    {
         virtual HRESULT DrawText(LPCTSTR pszText,int cchLen,LPRECT pRc,UINT uFormat)=0;
         virtual HRESULT MeasureText(LPCTSTR pszText,int cchLen, SIZE *psz) =0;
         virtual HRESULT TextOut(int x,int y, LPCTSTR lpszString,int nCount) =0;
+        virtual COLORREF GetTextColor() =0;
+        virtual COLORREF SetTextColor(COLORREF color)=0;
+    };
 
+    /** @brief Vector primitives: rects, rounded rects, ellipses, arcs, polylines. */
+    struct IRenderPrimitives
+    {
         virtual HRESULT DrawRectangle(LPCRECT pRect)=0;
         virtual HRESULT FillRectangle(LPCRECT pRect)=0;
         virtual HRESULT FillSolidRect(LPCRECT pRect,COLORREF cr)=0;
@@ -1113,52 +1139,86 @@ namespace SOUI
         virtual HRESULT DrawEllipse(LPCRECT pRect)=0;
         virtual HRESULT FillEllipse(LPCRECT pRect)=0;
         virtual HRESULT FillSolidEllipse(LPCRECT pRect,COLORREF cr)=0;
-
         virtual HRESULT DrawArc(LPCRECT pRect,float startAngle,float sweepAngle,bool useCenter) =0;
         virtual HRESULT FillArc(LPCRECT pRect,float startAngle,float sweepAngle) =0;
-
         virtual HRESULT DrawLines(LPPOINT pPt,size_t nCount) =0;
-        virtual HRESULT GradientFill(LPCRECT pRect,BOOL bVert,COLORREF crBegin,COLORREF crEnd,BYTE byAlpha=0xFF)=0;
-        virtual HRESULT GradientFillEx( LPCRECT pRect,const POINT* pts,COLORREF *colors,float *pos,int nCount,BYTE byAlpha=0xFF )=0;
-		virtual HRESULT GradientFill2(LPCRECT pRect,GradientType type,COLORREF crStart,COLORREF crCenter,COLORREF crEnd,float fLinearAngle,float fCenterX,float fCenterY,int nRadius,BYTE byAlpha=0xff) = 0;
+    };
+
+    /** @brief Bitmap / icon drawing and surface-to-surface blit. */
+    struct IRenderBitmap
+    {
         virtual HRESULT DrawIconEx(int xLeft, int yTop, HICON hIcon, int cxWidth,int cyWidth,UINT diFlags)=0;
         virtual HRESULT DrawBitmap(LPCRECT pRcDest,IBitmap *pBitmap,int xSrc,int ySrc,BYTE byAlpha=0xFF)=0;
         virtual HRESULT DrawBitmapEx(LPCRECT pRcDest,IBitmap *pBitmap,LPCRECT pRcSrc,UINT expendMode, BYTE byAlpha=0xFF)=0;
         virtual HRESULT DrawBitmap9Patch(LPCRECT pRcDest,IBitmap *pBitmap,LPCRECT pRcSrc,LPCRECT pRcSourMargin,UINT expendMode,BYTE byAlpha=0xFF) =0;
         virtual HRESULT BitBlt(LPCRECT pRcDest,IRenderTarget *pRTSour,int xSrc,int ySrc,DWORD dwRop=kSrcCopy)=0;
         virtual HRESULT AlphaBlend(LPCRECT pRcDest,IRenderTarget *pRTSrc,LPCRECT pRcSrc,BYTE byAlpha) =0;
+    };
+
+    /** @brief Gradient fills: linear, multi-stop and 3-stop radial/sweep. */
+    struct IRenderGradient
+    {
+        virtual HRESULT GradientFill(LPCRECT pRect,BOOL bVert,COLORREF crBegin,COLORREF crEnd,BYTE byAlpha=0xFF)=0;
+        virtual HRESULT GradientFillEx( LPCRECT pRect,const POINT* pts,COLORREF *colors,float *pos,int nCount,BYTE byAlpha=0xFF )=0;
+		virtual HRESULT GradientFill2(LPCRECT pRect,GradientType type,COLORREF crStart,COLORREF crCenter,COLORREF crEnd,float fLinearAngle,float fCenterX,float fCenterY,int nRadius,BYTE byAlpha=0xff) = 0;
+    };
+
+    /** @brief Path stroking and filling. */
+    struct IRenderPath
+    {
+        virtual HRESULT DrawPath(const IPath * path,IPathEffect * pathEffect=NULL) = 0;
+        virtual HRESULT FillPath(const IPath * path) = 0;
+    };
+
+    /** @brief Selected GDI-object state and raster op (xfermode). */
+    struct IRenderState
+    {
         virtual IRenderObj * GetCurrentObject(OBJTYPE uType) =0;
         //将指定的RenderObj恢复为默认状态
         virtual HRESULT SelectDefaultObject(OBJTYPE objType, IRenderObj ** pOldObj = NULL) =0;
         virtual HRESULT SelectObject(IRenderObj *pObj,IRenderObj ** pOldObj = NULL) =0;
-        virtual COLORREF GetTextColor() =0;
-        virtual COLORREF SetTextColor(COLORREF color)=0;
+        virtual HRESULT SetXfermode(int mode,int *pOldMode=NULL) = 0;
+    };
 
-        //两个兼容GDI操作的接口
-        virtual HDC GetDC(UINT uFlag=0)=0;
-        virtual void ReleaseDC(HDC hdc) =0;
-        
-        /**
-         * SetTransform
-         * @brief    设置坐标变换矩阵
-         * @param    const IxForm * pXForm --  3*3变换矩阵
-         * @param    IxForm * pOldXFrom --  原变换矩阵
-         * @return   HRESULT -- 成功返回S_OK
-         *
-         * Describe  
-         */
-        virtual HRESULT SetTransform(const IxForm * pXForm,IxForm *pOldXFrom=NULL) = 0;
+    /** @brief Direct pixel read/write. */
+    struct IRenderPixel
+    {
+		virtual COLORREF GetPixel(int x, int y) = 0;
+		virtual COLORREF SetPixel(int x, int y, COLORREF cr) = 0;
+    };
 
-        /**
-         * SetTransform
-         * @brief    获取当前坐标变换矩阵
-         * @param    IxForm * pXForm --  2*3变换矩阵
-         * @return   HRESULT -- 成功返回S_OK
-         *
-         * Describe  
-         */        
-        virtual HRESULT GetTransform(IxForm * pXForm) const = 0;
-        
+    /** @brief Offscreen layer push/pop (alpha compositing). */
+    struct IRenderLayer
+    {
+		virtual HRESULT PushLayer(const RECT * pRect,BYTE byAlpha=0xff) = 0;
+		virtual HRESULT PopLayer() = 0;
+    };
+
+    /**
+    * @struct     IRenderTarget
+    * @brief      RenderTarget对象
+    *
+    * Describe    渲染目标接口。聚合资源/表面/变换/裁剪/文本/图元/位图/渐变/
+    *             路径/状态/像素/图层共 12 个能力子接口；自身仅保留创建兼容
+    *             RenderTarget 与 QueryInterface 扩展查询。各渲染后端实现全部方法。
+    */
+    struct IRenderTarget: public IObjRef
+                       , public SObject
+                       , public IRenderResources
+                       , public IRenderSurface
+                       , public IRenderTransform
+                       , public IRenderClip
+                       , public IRenderText
+                       , public IRenderPrimitives
+                       , public IRenderBitmap
+                       , public IRenderGradient
+                       , public IRenderPath
+                       , public IRenderState
+                       , public IRenderPixel
+                       , public IRenderLayer
+    {
+        virtual HRESULT CreateCompatibleRenderTarget(SIZE szTarget,IRenderTarget **ppRenderTarget)=0;
+
         /**
          * QueryInterface
          * @brief    提供接口扩展的用的方法
@@ -1169,65 +1229,7 @@ namespace SOUI
          * Describe  具体能获取什么接口依赖于不同的渲染引擎
          */
         virtual HRESULT QueryInterface(REFGUID iid,IObjRef ** ppObj) =0;
-
-        /**
-         * GetPixel
-         * @brief    获取指定像素颜色值
-         * @param    int x -- x
-         * @param    int y -- y
-         * @return   COLORREF -- 像素颜色值
-         *
-         * Describe  和::GetPixel一致
-         */
-		virtual COLORREF GetPixel(int x, int y) = 0;
-
-        /**
-         * SetPixel
-         * @brief    设置指定像素颜色值
-         * @param    int x -- x
-         * @param    int y -- y
-		 * @param    COLORREF cr -- 设置的颜色值
-         * @return   COLORREF -- 原像素颜色值
-         *
-         * Describe  和::SetPixel一致
-         */
-		virtual COLORREF SetPixel(int x, int y, COLORREF cr) = 0;
-
-		/**
-		 *  Modify the current clip with the specified path.
-		 *  @param path The path to combine with the current clip
-		 *  @param mode The region op to apply to the current clip
-		 *  @param doAntiAlias true if the clip should be anti aliased
-		 */
-		virtual HRESULT ClipPath(const IPath * path, UINT mode, bool doAntiAlias = false) = 0;
-
-		/** Draw the specified path frame using current selected pen
-		@param path     The path to be drawn
-		*/
-		virtual HRESULT DrawPath(const IPath * path,IPathEffect * pathEffect=NULL) = 0;
-
-		/** Fill the specified path frame using current selected brush
-		@param path     The path to be drawn
-		*/
-		virtual HRESULT FillPath(const IPath * path) = 0;
-
-		/** This behaves the same as save(), but in addition it allocates an
-		offscreen bitmap. All drawing calls are directed there, and only when
-		the balancing call to restore() is made is that offscreen transfered to
-		the canvas (or the previous layer).
-		@param pRect (may be null) This rect, if non-null, is used as a hint to
-		limit the size of the offscreen, and thus drawing may be
-		clipped to it, though that clipping is not guaranteed to
-		happen. If exact clipping is desired, use clipRect().
-		@param byAlpha  This is applied to the offscreen when restore() is called.
-		@return The value to pass to restoreToCount() to balance this save() 
-		*/
-		virtual HRESULT PushLayer(const RECT * pRect,BYTE byAlpha=0xff) = 0;
-
-		virtual HRESULT PopLayer() = 0;
-
-		virtual HRESULT SetXfermode(int mode,int *pOldMode=NULL) = 0;
-	};
+    };
 
 
 	inline HRESULT IBitmap::Clone(IBitmap **ppClone) const 

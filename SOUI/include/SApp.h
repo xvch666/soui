@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Copyright (C) 2014-2050 SOUI团队
  * All rights reserved.
  * 
@@ -30,24 +30,24 @@
 #include "core/SObjectFactory.h"
 #include <OleAcc.h>
 
-#define GETRESPROVIDER      SOUI::SApplication::getSingletonPtr()
-#define GETRENDERFACTORY    SOUI::SApplication::getSingleton().GetRenderFactory()
-#define GETREALWNDHANDLER   SOUI::SApplication::getSingleton().GetRealWndHander()
-#define GETTOOLTIPFACTORY   SOUI::SApplication::getSingleton().GetToolTipFactory()
+#define GETRESPROVIDER      SOUI::SApplication::GetCurrentApp()
+#define GETRENDERFACTORY    SOUI::SApplication::GetCurrentApp()->GetRenderFactory()
+#define GETREALWNDHANDLER   SOUI::SApplication::GetCurrentApp()->GetRealWndHander()
+#define GETTOOLTIPFACTORY   SOUI::SApplication::GetCurrentApp()->GetToolTipFactory()
 
-#define LOADXML(p1,p2,p3)   SOUI::SApplication::getSingleton().LoadXmlDocment(p1,p2,p3)
-#define LOADIMAGE(p1,p2)    SOUI::SApplication::getSingleton().LoadImage(p1,p2)
-#define LOADIMAGE2(p1)      SOUI::SApplication::getSingleton().LoadImage2(p1)
-#define LOADICON(p1,p2)     SOUI::SApplication::getSingleton().LoadIcon(p1,p2,p2)
-#define LOADICON2(p1)       SOUI::SApplication::getSingleton().LoadIcon2(p1)
-#define TR(p1,p2)           SOUI::SApplication::getSingleton().tr(p1,p2)
-#define STR2ID(p1)          SOUI::SApplication::getSingleton().Str2ID(p1)
+#define LOADXML(p1,p2,p3)   SOUI::SApplication::GetCurrentApp()->LoadXmlDocment(p1,p2,p3)
+#define LOADIMAGE(p1,p2)    SOUI::SApplication::GetCurrentApp()->LoadImage(p1,p2)
+#define LOADIMAGE2(p1)      SOUI::SApplication::GetCurrentApp()->LoadImage2(p1)
+#define LOADICON(p1,p2)     SOUI::SApplication::GetCurrentApp()->LoadIcon(p1,p2,p2)
+#define LOADICON2(p1)       SOUI::SApplication::GetCurrentApp()->LoadIcon2(p1)
+#define TR(p1,p2)           SOUI::SApplication::GetCurrentApp()->tr(p1,p2)
+#define STR2ID(p1)          SOUI::SApplication::GetCurrentApp()->Str2ID(p1)
 
-#define GETCOLOR(x)         SOUI::SApplication::getSingleton().GetColor(x)
-#define GETSTRING(x)        SOUI::SApplication::getSingleton().GetString(x)
-#define GETLAYOUTSIZE(x)    SOUI::SApplication::getSingleton().GetLayoutSize(x)
+#define GETCOLOR(x)         SOUI::SApplication::GetCurrentApp()->GetColor(x)
+#define GETSTRING(x)        SOUI::SApplication::GetCurrentApp()->GetString(x)
+#define GETLAYOUTSIZE(x)    SOUI::SApplication::GetCurrentApp()->GetLayoutSize(x)
 
-#define CREATEINTERPOLATOR(x)  SOUI::SApplication::getSingleton().CreateInterpolatorByName(x)
+#define CREATEINTERPOLATOR(x)  SOUI::SApplication::GetCurrentApp()->CreateInterpolatorByName(x)
 #define RT_LAYOUT _T("LAYOUT")
 
 namespace SOUI
@@ -102,6 +102,16 @@ public:
     SApplication(IRenderFactory *pRendFactory,HINSTANCE hInst,LPCTSTR pszHostClassName = _T("SOUIHOST"), const ISystemObjectRegister & sysObjRegister = SObjectDefaultRegister(), BOOL bImeApp = FALSE);
 
     ~SApplication(void);
+    /**
+     * GetCurrentApp
+     * @brief    Get the current application context (injectable access point)
+     * @return   SApplication * -- current app; falls back to the singleton if unset
+     * Describe  Decouples global access from the concrete singleton. The GET* and LOAD*
+     *           macros route through here. Use SetCurrentApp to retarget them at
+     *           runtime (multi-instance / DI / test doubles).
+     */
+    static SApplication * GetCurrentApp() { return s_pCurApp ? s_pCurApp : getSingletonPtr(); }
+    static void SetCurrentApp(SApplication * pApp) { s_pCurApp = pApp; }
 
 
     /**
@@ -333,6 +343,7 @@ protected:
 
 	//一组单例指针
 	void * m_pSingletons[SINGLETON_COUNT];
+    static SApplication * s_pCurApp;  /**< current app context (injectable); set to <this> in ctor, falls back to singleton when unset */
 };
 
 

@@ -1,7 +1,7 @@
 #define DLL_CORE
 
-//需要IAccessible接口支持打开下面的宏: 2018.10.17
-//#define SOUI_ENABLE_ACC
+// Enable IAccessible (MSAA) support by default.
+#define SOUI_ENABLE_ACC
 
 #ifdef DLL_CORE
 # ifdef SOUI_EXPORTS
@@ -15,10 +15,10 @@
 
 #define OR_API SOUI_EXP
 
-// Change these values to use different versions
-#ifndef WINVER 
-#define WINVER        0x0500
-#define _WIN32_WINNT    0x0502
+// Minimum target: Windows 7 (XP/Win2000 support dropped)
+#ifndef WINVER
+#define WINVER        0x0601
+#define _WIN32_WINNT    0x0601
 #endif//WINVER
 
 #ifndef _WIN32_IE

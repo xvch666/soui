@@ -1,4 +1,4 @@
-﻿/**
+/**
 * Copyright (C) 2014-2050 
 * All rights reserved.
 * 
@@ -166,6 +166,32 @@ namespace SOUI
 		SStringT strRaw;	//原始字符串
 		SStringT strTr;		//翻译后的字符串
 	};
+
+    /**
+    * @struct   SwndRenderCache
+    * @brief    SWindow 渲染缓存状态（从 God Object 抽出的内聚复合对象）
+    *
+    * Describe  聚合分层/缓存 RenderTarget、窗口 Region、无效区域及缓存标志。
+    *           仅供 SWindow 渲染管线内部使用，派生类不应直接访问。
+    */
+    struct SwndRenderCache
+    {
+        SwndRenderCache()
+            : m_bCacheDraw(FALSE)
+            , m_bCacheDirty(TRUE)
+            , m_bLayeredWindow(FALSE)
+        {
+        }
+
+        CAutoRefPtr<IRenderTarget> m_cachedRT;      /**< 缓存窗口绘制的RT */
+        CAutoRefPtr<IRenderTarget> m_layeredRT;     /**< 分层窗口绘制的RT */
+        CAutoRefPtr<IRegion>       m_rgnWnd;        /**< 窗口Region */
+        CAutoRefPtr<IRegion>       m_invalidRegion; /**< 非背景混合窗口的脏区域 */
+
+        DWORD m_bCacheDraw:1;      /**< 支持窗口内容的Cache标志 */
+        DWORD m_bCacheDirty:1;     /**< 缓存窗口脏标志 */
+        DWORD m_bLayeredWindow:1;  /**< 指示是否是一个分层窗口 */
+    };
 
     /**
     * @class     SWindow
@@ -1082,7 +1108,7 @@ namespace SOUI
         * @return   bool -- true表示Cache已经Dirty
         * Describe  
         */    
-        bool IsCacheDirty() const  {return IsDrawToCache()&&m_bCacheDirty;}
+        bool IsCacheDirty() const  {return IsDrawToCache()&&m_renderCache.m_bCacheDirty;}
         
         /**
         * MarkCacheDirty
@@ -1091,7 +1117,7 @@ namespace SOUI
         * @return   void
         * Describe  
         */    
-        void MarkCacheDirty(bool bDirty) {m_bCacheDirty = bDirty;}
+        void MarkCacheDirty(bool bDirty) {m_renderCache.m_bCacheDirty = bDirty;}
 
 
 		/**
@@ -1364,14 +1390,9 @@ namespace SOUI
         DWORD               m_bMsgTransparent:1;/**< 接收消息标志 TRUE-不处理消息 */
         DWORD               m_bFocusable:1;     /**< 窗口可获得焦点标志 */
         DWORD               m_bDrawFocusRect:1; /**< 绘制默认的焦点虚框 */
-        DWORD               m_bCacheDraw:1;     /**< 支持窗口内容的Cache标志 */
-        DWORD               m_bCacheDirty:1;    /**< 缓存窗口脏标志 */
-        DWORD               m_bLayeredWindow:1; /**< 指示是否是一个分层窗口 */
 
 		LayoutDirtyType     m_layoutDirty;      /**< 布局脏标志 参见LayoutDirtyType */
-        CAutoRefPtr<IRenderTarget> m_cachedRT;  /**< 缓存窗口绘制的RT */
-        CAutoRefPtr<IRenderTarget> m_layeredRT; /**< 分层窗口绘制的RT */
-        CAutoRefPtr<IRegion>       m_rgnWnd;    /**< 窗口Region */
+        SwndRenderCache    m_renderCache;      /**< 渲染缓存复合对象（分层/缓存RT、窗口Region、无效区域、缓存标志） */
         ISkinObj *          m_pBgSkin;          /**< 背景skin */
         ISkinObj *          m_pNcSkin;          /**< 非客户区skin */
         ULONG_PTR           m_uData;            /**< 窗口的数据位,可以通过GetUserData获得 */
@@ -1390,7 +1411,6 @@ namespace SOUI
         
         PGETRTDATA m_pGetRTData;
         
-        CAutoRefPtr<IRegion>    m_invalidRegion;/**< 非背景混合窗口的脏区域 */
 		CAutoRefPtr<IAttrStorage> m_attrStorage;/**< 属性保存对象 */
 		
 #ifdef SOUI_ENABLE_ACC

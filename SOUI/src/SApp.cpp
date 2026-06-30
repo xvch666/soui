@@ -1,4 +1,4 @@
-﻿#include "souistd.h"
+#include "souistd.h"
 #include "SApp.h"
 #include "core/SimpleWnd.h"
 #include "core/SWindowMgr.h"
@@ -31,6 +31,7 @@
 
 namespace SOUI
 {
+SApplication * SApplication::s_pCurApp = NULL;
 
 class SNullTranslator : public TObjRefImpl<ITranslatorMgr>
 {
@@ -189,6 +190,7 @@ SApplication::SApplication(IRenderFactory *pRendFactory,HINSTANCE hInst,LPCTSTR 
     ,m_hMainWnd(NULL)
 {
     SWndSurface::Init();
+    s_pCurApp = this;   // register as current app context (GET*/LOAD* macros route via GetCurrentApp)
 	memset(m_pSingletons, 0, sizeof(m_pSingletons));
     _CreateSingletons(hInst,pszHostClassName,bImeApp);
 

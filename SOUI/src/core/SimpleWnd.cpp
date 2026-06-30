@@ -1,4 +1,4 @@
-﻿#include "souistd.h"
+#include "souistd.h"
 #include "core/SimpleWnd.h"
 
 namespace SOUI
@@ -374,9 +374,6 @@ BOOL CSimpleWnd::CenterWindow(HWND hWndCenter /*= NULL*/)
 		}
 
 		// center within screen coordinates
-#if WINVER < 0x0500
-		::SystemParametersInfo(SPI_GETWORKAREA, NULL, &rcArea, NULL);
-#else
 		HMONITOR hMonitor = NULL;
 		if(hWndCenter != NULL)
 		{
@@ -392,7 +389,6 @@ BOOL CSimpleWnd::CenterWindow(HWND hWndCenter /*= NULL*/)
 		::GetMonitorInfo(hMonitor, &minfo);
 
 		rcArea = minfo.rcWork;
-#endif
 		if(hWndCenter == NULL)
 			rcCenter = rcArea;
 		else
