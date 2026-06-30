@@ -1,4 +1,4 @@
-﻿#include "souistd.h"
+#include "souistd.h"
 #include "core/SObjectFactory.h"
 #include "res.mgr/SObjDefAttr.h"
 
@@ -58,7 +58,7 @@ IObject * SObjectFactoryMgr::CreateObject(const SObjectInfo & objInfo) const
 {
     if(!HasKey(objInfo))
     {
-		SLOGFMTD(L"Warning: no object %s of type:%d in SOUI!!", (LPCWSTR)objInfo.mName, objInfo.mType);
+		SLOGFMTD(L"Warning: no object %ls of type:%d in SOUI!!", (LPCWSTR)objInfo.mName, objInfo.mType);
         return NULL;
     }
     IObject * pRet = GetKeyObject(objInfo)->NewObject();

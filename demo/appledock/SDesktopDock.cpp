@@ -37,7 +37,7 @@ void SDesktopDock::OnPaint(IRenderTarget *pRT)
 
 		for (i = 0; i < MAX_COUNT; i++)
 		{
-			m_RTRect[i] = CRect(CPoint(X + m_Width * i+rcClient.left, Y), CSize(m_Width, m_Height));
+			m_RTRect[i] = CRect(CPoint((LONG)(X + m_Width * i+rcClient.left), (LONG)Y), CSize(m_Width, m_Height));
 			m_dRate[i] = 1;
 		}
 	}
@@ -108,7 +108,7 @@ void SDesktopDock::initDockRect()
 
 	for (i = 0; i < MAX_COUNT; i++)
 	{
-		m_RTRect[i] = CRect(CPoint(X + m_Width * i+rc.left, Y), CSize(m_Width, m_Height));
+		m_RTRect[i] = CRect(CPoint((LONG)(X + m_Width * i+rc.left), (LONG)Y), CSize(m_Width, m_Height));
 		m_dRate[i] = 1;
 	}
 
@@ -164,7 +164,7 @@ void SDesktopDock::GetImageRate()
 	{
 		//取动态矩形中心点
 		//cp = CPoint(m_RTRect[i]->X + m_RTRect[i]->Width/2.0, m_RTRect[i]->Y + m_RTRect[i]->Height/2.0);
-		cp = CPoint(m_RTRect[i].left + m_RTRect[i].Width()/2.0, m_RTRect[i].top + m_RTRect[i].Height()/2.0);
+		cp = CPoint((LONG)(m_RTRect[i].left + m_RTRect[i].Width()/2.0), (LONG)(m_RTRect[i].top + m_RTRect[i].Height()/2.0));
 		//计算鼠标坐标到动态矩形中心的距离	
 		dRTDisc = sqrt(double(cp.x-m_CPX)*(cp.x-m_CPX) +double(cp.y-m_CPY)*(cp.y-m_CPY));
 
@@ -213,9 +213,9 @@ void SDesktopDock::GetRTRect()
 		width = m_Width * m_dRate[i];
 		if (i > 0)
 			X += m_Width * m_dRate[i-1];
-		m_RTRect[i].left = X + rc.left;
-		m_RTRect[i].top = cy - m_Height * m_dRate[i] - m_gap;
-		m_RTRect[i].right = m_RTRect[i].left + width;
-		m_RTRect[i].bottom = m_RTRect[i].top + (m_Height * m_dRate[i]);
+		m_RTRect[i].left = (LONG)(X + rc.left);
+		m_RTRect[i].top = (LONG)(cy - m_Height * m_dRate[i] - m_gap);
+		m_RTRect[i].right = (LONG)(m_RTRect[i].left + width);
+		m_RTRect[i].bottom = (LONG)(m_RTRect[i].top + (m_Height * m_dRate[i]));
 	}
 }

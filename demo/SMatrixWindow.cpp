@@ -1,4 +1,4 @@
-﻿#include "stdafx.h"
+#include "stdafx.h"
 #include "SMatrixWindow.h"
 #include "../third-part/skmatrix/include/SkCamera.h"
 namespace SOUI
@@ -41,24 +41,24 @@ namespace SOUI
 			switch(m_rotateDir)
 			{
 			case RotateX:
-				zOffset = rc.Height()/2*fabs(sin(m_nRotate*3.1415926/180));
+				zOffset = (float)(rc.Height()/2*fabs(sin(m_nRotate*3.1415926/180)));
 				view.translate(0,0,zOffset);
-				view.rotateX(m_nRotate);
+				view.rotateX((float)m_nRotate);
 				break;
 			case RotateY:
-				zOffset = rc.Width()/2*fabs(sin(m_nRotate*3.1415926/180));
+				zOffset = (float)(rc.Width()/2*fabs(sin(m_nRotate*3.1415926/180)));
 				view.translate(0,0,zOffset);
-				view.rotateY(m_nRotate);
+				view.rotateY((float)m_nRotate);
 				break;
-			case RotateZ:view.rotateZ(m_nRotate);break;
+			case RotateZ:view.rotateZ((float)m_nRotate);break;
 			}
 			SkMatrix mat;
 			view.getMatrix(&mat);
 
 			int wid = rc.Width()/2+rc.left;
 			int hei = rc.Height()/2+rc.top;
-			mat.preTranslate(-wid,-hei);
-			mat.postTranslate(wid,hei);
+			mat.preTranslate((float)-wid,(float)-hei);
+			mat.postTranslate((float)wid,(float)hei);
 
 			pRT->SetTransform(&mat);
 			//[0,90) [180,270)=> fore

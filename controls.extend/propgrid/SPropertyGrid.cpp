@@ -156,7 +156,7 @@ namespace SOUI
                     InsertString(-1,NULL,-1,(LPARAM)pChild);
                     pChild = pChild->GetItem(IPropertyItem::GPI_NEXTSIBLING);
                 }
-                //Õ¹¿ª×ÓÏîs
+                //Õ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½s
                 pChild=pGroup->GetItem(IPropertyItem::GPI_FIRSTCHILD);
                 while(pChild)
                 {
@@ -187,7 +187,7 @@ namespace SOUI
                     SortInsert(pChild);
                     pChild = pChild->GetItem(IPropertyItem::GPI_NEXTSIBLING);
                 }
-                //Õ¹¿ª×ÓÏîs
+                //Õ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½s
                 pChild=pGroup->GetItem(IPropertyItem::GPI_FIRSTCHILD);
                 while(pChild)
                 {
@@ -441,14 +441,14 @@ namespace SOUI
         ||  (pt.x-rcClient.left>=nItemHei+m_nNameWidth-1
             && pt.x-rcClient.left<=nItemHei+m_nNameWidth+1))
         {
-            SetCursor(SApplication::getSingleton().LoadCursor(MAKEINTRESOURCE(IDC_SIZEWE)));
+            SetCursor(SApplication::getSingleton().LoadCursor(IDC_SIZEWE));
         }else
         {
             int iItem = SListBox::HitTest(CPoint(pt));
             if(iItem<0) return FALSE;
             ITEMPART ip = HitTest(iItem,pt);
             if(ip==IP_SWITCH)
-                SetCursor(SApplication::getSingleton().LoadCursor(MAKEINTRESOURCE(IDC_HAND)));
+                SetCursor(SApplication::getSingleton().LoadCursor(IDC_HAND));
             else
                 return FALSE;            
         }

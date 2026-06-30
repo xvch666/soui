@@ -50,7 +50,7 @@ namespace SOUI
 
 		CRect rc=GetClientRect();
 		point-=rc.TopLeft();
-		for(int i=0;i<m_lstPoints.GetCount();i++)
+		for(int i=0;i<(int)m_lstPoints.GetCount();i++)
 		{
 			POINT pt = m_lstPoints[i];
 			CRect rcFrame(pt,CSize(m_nFrameSize,m_nFrameSize));
@@ -87,11 +87,11 @@ namespace SOUI
 			pRT->CreatePen(m_nLineStyle,m_crLine,m_nLineWidth,&pen);
 			pRT->SelectObject(pen,(IRenderObj**)&oldPen);
 
-			m_path->offset(rc.left,rc.top);
+			m_path->offset((float)rc.left,(float)rc.top);
 
 			pRT->DrawPath(m_path,pathEffect);
 
-			m_path->offset(-rc.left,-rc.top);
+			m_path->offset((float)-rc.left,(float)-rc.top);
 
 			pRT->SelectObject(oldPen);
 		}

@@ -191,8 +191,8 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPTSTR /*
         
         theApp->SetLogManager(pLogMgr);
         SLOG_INFO("test="<<200);
-        SLOGFMTE("log output using ansi format,str=%s, tick=%u","test",GetTickCount());
-        SLOGFMTE(L"log output using unicode format,str=%s, tick=%u",L"中文",GetTickCount());
+        SLOGFMTE("log output using ansi format,str=%hs, tick=%u","test",GetTickCount());
+        SLOGFMTE(L"log output using unicode format,str=%ls, tick=%u",L"中文",GetTickCount());
         
         //控件注册要放到AddResProvider前： 2016年3月8日
         

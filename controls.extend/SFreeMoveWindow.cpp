@@ -201,8 +201,8 @@ namespace SOUI
 			{
 				m_nDistY = rcParent.bottom - rcWnd.bottom;
 			}
-			GetLayoutParam()->SetSpecifiedSize(Horz,SLayoutSize(rcWnd.Width(),SLayoutSize::px));
-			GetLayoutParam()->SetSpecifiedSize(Vert,SLayoutSize(rcWnd.Height(),SLayoutSize::px));
+			GetLayoutParam()->SetSpecifiedSize(Horz,SLayoutSize((float)rcWnd.Width(),SLayoutSize::px));
+			GetLayoutParam()->SetSpecifiedSize(Vert,SLayoutSize((float)rcWnd.Height(),SLayoutSize::px));
 		}
 	}
 
