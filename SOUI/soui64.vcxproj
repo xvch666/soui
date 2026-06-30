@@ -211,6 +211,7 @@
     <ClCompile Include="src\core\SimpleWnd.cpp" />
     <ClCompile Include="src\layout\SouiLayout.cpp" />
     <ClCompile Include="src\core\Swnd.cpp" />
+    <ClCompile Include="src\core\SwndRender.cpp" />
     <ClCompile Include="src\core\SwndAccessible.cpp" />
     <ClCompile Include="src\core\SwndContainerImpl.cpp" />
     <ClCompile Include="src\helper\SwndFinder.cpp" />

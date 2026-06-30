@@ -237,6 +237,9 @@
     <ClCompile Include="src\core\Swnd.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\core\SwndRender.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="src\core\SwndAccessible.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
